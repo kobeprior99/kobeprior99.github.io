@@ -81,6 +81,9 @@ nav li:first-child a span{
     .menuButton{
         display: block; 
     }
+    nav li{
+        height: 100px;
+    }
 }
 @media(max-width: 400px){
     .sidebar{
