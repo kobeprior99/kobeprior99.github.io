@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
+<!-- note that index will be the about page -->
+<Layout title = 'About Page'>
 
-<Layout>
-	<Welcome />
+ <section id="about">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="/Headshot.jpg" alt="Kobe Prior" />
+      </div>
+      <div class="about-bio">
+        <h1>Kobe Prior</h1>
+        <p>
+          [Insert bio text here. Aim for 3–4 sentences covering who you are,
+          your technical background and interests, what you've worked on, and
+          what you're looking for. This should give visitors a clear sense of
+          your experience and goals as an electrical engineer.]
+        </p>
+        <a href="/Resume.pdf" target="_blank" class="resume-link">View My Resume →</a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
