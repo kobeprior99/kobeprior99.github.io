@@ -301,3 +301,134 @@ footer {
     color: #1a3a5c;
     border: 1px solid rgba(100, 160, 220, 0.3);
 }
+
+.read-more {
+    display: inline-block;
+    margin-top: 12px;
+    text-decoration: none;
+    color: #1a3a5c;
+    font-size: 0.9rem;
+    padding: 7px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 160, 220, 0.4);
+    background: rgba(180, 210, 240, 0.2);
+    transition: background 0.2s;
+    align-self: flex-start;
+}
+
+.read-more:hover {
+    background: rgba(180, 210, 240, 0.5);
+}
+
+.project-detail {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 40px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #1a3a5c;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.detail-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(100, 160, 220, 0.2);
+}
+
+.detail-content h1 {
+    font-size: 2rem;
+    color: #1a3a5c;
+    margin-bottom: 12px;
+}
+
+.detail-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-top: 20px;
+    white-space: pre-line;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.carousel-track-wrapper {
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(100, 160, 220, 0.2);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    min-width: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(180, 210, 240, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #1a3a5c;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s;
+}
+
+.carousel-btn:hover {
+    background: rgba(180, 210, 240, 0.8);
+}
+
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(100, 160, 220, 0.3);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dot.active {
+    background: #1a3a5c;
+}

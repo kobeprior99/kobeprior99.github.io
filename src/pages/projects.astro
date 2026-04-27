@@ -1,28 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const projects = [
-  {
-    title: "Custom Phased Array for Scattering Analysis",
-    description: "A custom printed circuit board utilizes 5 4:1 wilkinson power dividers to split 1 input channel into 16 equal amplitude output channels. Each output channel has a digital phase shifter (PE44820) controlled by an STM microcontroller. The software defined radio connects to the phase shifting network and an external probe antenna to probe scattered power like similar to monostatic radar.",
-    image: "/projects/PArray.jpg",
-    tags: ["RF", "Antenna Systems", "SDR", "Embedded Design"],
-    category: "hardware"
-  },
-  {
-    title: "Coupled Line Bandpass Filter with 2nd Harmonic Supression",
-    description: "Short 2-3 sentence description of what this project does and what problem it solves.",
-    image: "/projects/coupled-line-bandpass.jpg",
-    tags: ["Passive MW Devices", "Keysight ADS"],
-    category: "hardware"
-  },
-  {
-    title: "X-Band Microstrip Patch Antennas",
-    description: "Short 2-3 sentence description.",
-    image: "/projects/X-band.jpg",
-    tags: ["Antenna", "HFSS"],
-    category: "hardware"
-  }
-];
+import { projects } from "../data/projects.ts";
+
 ---
 
 
@@ -42,7 +21,7 @@ const projects = [
       {projects.map((project) => (
         <div class="project-card" data-category={project.category}>
           <div class="project-image">
-            <img src={project.image} alt={project.title} />
+            <img src={project.images[0]} alt={project.title} />
           </div>
           <div class="project-info">
             <h3>{project.title}</h3>
@@ -52,6 +31,7 @@ const projects = [
                 <span class="tag">{tag}</span>
               ))}
             </div>
+            <a href = {`/projects/${project.slug}`} class = "read-more">Read More</a>
           </div>
         </div>
       ))}
