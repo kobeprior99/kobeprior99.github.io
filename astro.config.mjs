@@ -5,4 +5,3 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     site: 'https://kobeprior99.github.io'
 });
-a
