@@ -35,5 +35,16 @@ export const projects: Project[] = [
     images: ["/projects/X-band.jpg"],
     tags: ["Antenna", "HFSS"],
     category: "hardware"
+  },
+
+  {
+    slug: "finance_dashboard",
+    title: "Finance Dashboard",
+    description: "A personal project using python, web-based graphical user interface to report data about my current finances using a google sheet api.",
+    fullDescription: `Full detailed writeup for the patch antenna project goes here.`,
+    images: ["/projects/Finance_Dashboard.png"],
+    tags: ["Python", "Data Visualization", "Google Sheets API"],
+    category: "software"
   }
+
 ];
