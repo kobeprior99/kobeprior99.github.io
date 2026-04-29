@@ -559,3 +559,14 @@ html.dark .read-more {
 html.dark .read-more:hover {
     background: rgba(30, 80, 140, 0.6);
 }
+
+nav a.active-link {
+    background: rgba(180, 210, 240, 0.6);
+    border-color: rgba(100, 160, 220, 0.7);
+    font-weight: 600;
+}
+
+html.dark nav a.active-link {
+    background: rgba(30, 80, 140, 0.6);
+    border-color: rgba(100, 180, 255, 0.4);
+}
