@@ -432,3 +432,130 @@ footer {
 .dot.active {
     background: #1a3a5c;
 }
+
+/* Dark mode variables */
+html.dark {
+    --bg: #0e1b2a;
+    --bg-secondary: #1a2a3a;
+    --text: #e8f4fd;
+    --text-muted: #8aafc8;
+    --blue-tint: rgba(30, 60, 100, 0.5);
+    --glass-bg: rgba(20, 40, 70, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+html:not(.dark) {
+    --bg: #f0f0f0;
+    --bg-secondary: #e8f4fb;
+    --text: #333;
+    --text-muted: #5a7a9a;
+    --blue-tint: rgba(180, 210, 240, 0.35);
+    --glass-bg: rgba(180, 210, 240, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow: rgba(100, 160, 220, 0.15);
+}
+
+/* Apply variables */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background: var(--blue-tint);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 24px var(--shadow);
+    color: var(--text);
+}
+
+footer {
+    background: var(--blue-tint);
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -4px 24px var(--shadow);
+    color: var(--text);
+}
+
+nav a, .footer-links a {
+    color: var(--text);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.about-bio h1, .projects-title, .detail-content h1 {
+    color: var(--text);
+}
+
+.about-bio p, .project-info p, .detail-content p {
+    color: var(--text);
+}
+
+.bio-location {
+    color: var(--text-muted);
+}
+
+.project-card {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.project-info h3 {
+    color: var(--text);
+}
+
+.filter-btn {
+    color: var(--text);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--blue-tint);
+}
+
+.resume-link {
+    color: var(--text);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.tag {
+    color: var(--text);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.back-link {
+    color: var(--text);
+}
+
+/* Toggle button */
+#theme-toggle {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+#theme-toggle:hover {
+    background: var(--blue-tint);
+}
+html.dark #logo {
+    filter: invert(1);
+}
+html:not(.dark) #theme-toggle {
+    filter: grayscale(1) brightness(0);
+}
+html.dark .read-more {
+    color: #a8d4f5;
+    background: rgba(30, 80, 140, 0.4);
+    border-color: rgba(100, 180, 255, 0.3);
+}
+
+html.dark .read-more:hover {
+    background: rgba(30, 80, 140, 0.6);
+}
