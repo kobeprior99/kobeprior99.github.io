@@ -3,9 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import { projects } from "../../data/projects.ts";
 
 export function getStaticPaths() {
-  return projects.map(project => ({
+  return projects.map((project) => ({
     params: { slug: project.slug },
-    props: { project }
+    props: { project },
   }));
 }
 
@@ -20,27 +20,29 @@ const { project } = Astro.props;
       <button class="carousel-btn prev" id="prev">&#8592;</button>
       <div class="carousel-track-wrapper">
         <div class="carousel-track" id="track">
-          {project.images.map((img, i) => (
-            <div class="carousel-slide">
-              <img src={img} alt={`${project.title} image ${i + 1}`} />
-            </div>
-          ))}
+          {
+            project.images.map((img, i) => (
+              <div class="carousel-slide">
+                <img src={img} alt={`${project.title} image ${i + 1}`} />
+              </div>
+            ))
+          }
         </div>
       </div>
       <button class="carousel-btn next" id="next">&#8594;</button>
       <div class="carousel-dots" id="dots">
-        {project.images.map((_, i) => (
-          <span class={`dot ${i === 0 ? 'active' : ''}`} data-index={i}></span>
-        ))}
+        {
+          project.images.map((_, i) => (
+            <span class={`dot ${i === 0 ? "active" : ""}`} data-index={i} />
+          ))
+        }
       </div>
     </div>
 
     <div class="detail-content">
       <h1>{project.title}</h1>
       <div class="project-tags">
-        {project.tags.map((tag) => (
-          <span class="tag">{tag}</span>
-        ))}
+        {project.tags.map((tag) => <span class="tag">{tag}</span>)}
       </div>
       <p>{project.fullDescription}</p>
     </div>
@@ -48,8 +50,8 @@ const { project } = Astro.props;
 </Layout>
 
 <script>
-  const track = document.getElementById('track') as HTMLElement;
-  const dots = document.querySelectorAll<HTMLElement>('.dot');
+  const track = document.getElementById("track") as HTMLElement;
+  const dots = document.querySelectorAll<HTMLElement>(".dot");
   const total = dots.length;
   let current = 0;
   let timer: ReturnType<typeof setInterval>;
@@ -57,8 +59,8 @@ const { project } = Astro.props;
   function goTo(index: number) {
     current = (index + total) % total;
     track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach(d => d.classList.remove('active'));
-    dots[current].classList.add('active');
+    dots.forEach((d) => d.classList.remove("active"));
+    dots[current].classList.add("active");
   }
 
   function startAuto() {
@@ -70,10 +72,19 @@ const { project } = Astro.props;
     startAuto();
   }
 
-  document.getElementById('prev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-  document.getElementById('next')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => { goTo(Number(dot.dataset.index)); resetAuto(); });
+  document.getElementById("prev")?.addEventListener("click", () => {
+    goTo(current - 1);
+    resetAuto();
+  });
+  document.getElementById("next")?.addEventListener("click", () => {
+    goTo(current + 1);
+    resetAuto();
+  });
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      goTo(Number(dot.dataset.index));
+      resetAuto();
+    });
   });
 
   startAuto();
