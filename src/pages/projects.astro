@@ -2,22 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects.ts";
 ---
-
 <Layout title="Projects Page">
   <section id="projects">
     <div class="projects-container">
       <h2 class="projects-title">Projects</h2>
-
       <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="hardware">Hardware / RF</button>
         <button class="filter-btn" data-filter="software">Software</button>
       </div>
-
       <div class="projects-grid">
         {
           projects.map((project) => (
-            <div class="project-card" data-category={project.category}>
+            <div class="project-card" data-category={project.category.join(" ")}>
               <div class="project-image">
                 <img src={project.images[0]} alt={project.title} />
               </div>
@@ -39,19 +36,16 @@ import { projects } from "../data/projects.ts";
       </div>
     </div>
   </section>
-
   <script>
     const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
     const cards = document.querySelectorAll<HTMLElement>(".project-card");
-
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         buttons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-
         const filter = btn.dataset.filter;
         cards.forEach((card) => {
-          if (filter === "all" || card.dataset.category === filter) {
+          if (filter === "all" || card.dataset.category!.includes(filter!)) {
             card.style.display = "flex";
           } else {
             card.style.display = "none";

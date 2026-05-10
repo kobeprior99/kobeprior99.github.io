@@ -5,7 +5,7 @@ export interface Project {
   fullDescription: string;
   images: string[];
   tags: string[];
-  category: "hardware" | "software";
+  category: ("hardware" | "software")[];
 }
 
 export const projects: Project[] = [
@@ -16,7 +16,16 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the phased array project goes here.`,
     images: ["/projects/PArray.jpg"],
     tags: ["RF", "Antenna Systems", "SDR", "Embedded Design"],
-    category: "hardware"
+    category: ["hardware"]
+  },
+  {
+    slug: 'smart_pick',
+    title: "Smart Pick for Rock Cutting",
+    description: "An intelligent sensing system to monitor forces and vibrations on a rock cutting pick used in mining operations. The system is useful in identifying what rock is being cut and when the pick is wearing down.Our approach enables preventative pick replacement, reducing the risk of cascading failures and costly shutdowns. Additionally, real-time rock characterization helps operators avoid cutting non-profitable or highly abrasive materials—extending tool life and preventing contamination that can lead to downstream processing costs.",
+    fullDescription: `Full detailed writeup for the smart pick project goes here.`,
+    images: ["/projects/Smart_Pick.png"],
+    tags: ["Printed Circuit Board Design", "Embedded Systems", "Sensor Integration", "Data Analysis"],
+    category: ["hardware"]
   },
   {
     slug: "BPF",
@@ -25,7 +34,7 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the bandpass filter project goes here.`,
     images: ["/projects/coupled-line-bandpass.jpg"],
     tags: ["Passive MW Devices", "Keysight ADS", "Filter Design"],
-    category: "hardware"
+    category: ["hardware"]
   },
   {
     slug: "patch-antenna",
@@ -34,7 +43,7 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the patch antenna project goes here.`,
     images: ["/projects/X-band.jpg"],
     tags: ["Antenna", "HFSS"],
-    category: "hardware"
+    category: ["hardware"]
   },
 
   {
@@ -44,7 +53,7 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the patch antenna project goes here.`,
     images: ["/projects/Finance_Dashboard.png"],
     tags: ["Python", "Data Visualization", "Google Sheets API"],
-    category: "software"
+    category: ["software"]
   },
   {
     slug: "low_noise_amplifier",
@@ -53,7 +62,7 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the low noise amplifier project goes here.`,
     images: ["/projects/LNA.jpg"],
     tags: ["Amplifier Design", "BFP650", "KeysightADS", "Active Microwave Devices"],
-    category: "hardware"
+    category: ["hardware"]
   },
   {
     slug: "kalman_filter",
@@ -62,7 +71,7 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the Kalman filter project goes here.`,
     images: ["/projects/Kalman_Filter.png"],
     tags: ["MATLAB", "Kalman Filter", "State Estimation"],
-    category: "software"
+    category: ["software"]
   }, 
   {
     slug: "Bent_Pipe",
@@ -71,8 +80,44 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the bent pipe communication system project goes here.`,
     images: ["/projects/Bent_Pipe.png"],
     tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
-    category: "hardware"
+    category: ["software", "hardware"]
 
+  },
+  {
+    slug: "Stegonagraphy",
+    title: "Stegonagraphy in C++",
+    description: "Embedded messages into pixels of an image using a C++ program. The program ecodes on red blue or green color channel and the intensity of each pixel is used to encode 8 bits of data. The program can also decode the message from the image.",
+    fullDescription: "Full detailed writeup for Stegonagraphy in C++ project goes here.",
+    images: ["/projects/stegonagraphy.jpeg"],
+    tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
+    category: ["software"]
+  },
+  {
+    slug: "IR eavesdropper",
+    title: "Infrared Eavesdropping",
+    description: "Collaborated with Blane Miller and Cooper Hammond on an embedded systems project exposing vulnerabilities in infrared (IR) communication and proposing a secure alternative. This multidisciplinary project involved designing software, implementing signal processing techniques, and addressing security challenges in communication protocols.",
+    fullDescription: "Full description here",
+    images: ["/projects/eavesdrop.png"],
+    tags: ["Embedded C", "Embedded Systems", "Finite State Machines", "Signal Processing"],
+    category: ["software", "hardware"]
+  },
+  {
+    slug: "Antenna_Demo",
+    title: "Antenna Demonstration Module",
+    description: "For my first semester involved in undergraduate research I worked on the hardware and software for a antenna demonstration module that transmitted with one antenna and reported the relative gain at the second antenna. This allowed for the dynamic demonstration of antenna propagation phenomenon like free space path loss and polarization loss. The module used an all in one touch screen raspberry pi and an ADALM PLUTO software defined radio driven by GNU radio.",
+    fullDescription: "",
+    images: ["/projects/Antenna_Demo.jpeg"],
+    tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
+    category: ["software", "hardware"]
+  },
+  {
+    slug: "SEED_BOT",
+    title: "SEED Lab Autonomous Robot",
+    description: "For a course designed to expose electrical engineering stduetns to the design process, myself and 3 other students designed a built an autonomoous robot that navigated a course using aruco markers with different colored arrows to indicate the direction the robot should turn. The robot was built using an arduino microcontroller, a motor driver, and a camera for computer vision.",
+    fullDescription: "insert full description here",
+    images: ["/projects/Seed_Bot.jpeg"],
+    tags: ["Computer Vision", "Python", "Arduino", "Raspberry Pi"],
+    category: ["software", "hardware"]
   }
 
 ];
