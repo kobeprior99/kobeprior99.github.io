@@ -1,0 +1,241 @@
+---
+// src/components/Timeline.astro
+const items = [
+  {
+    year: "Spring 2022",
+    role: "Graduate High School",
+    org: "Bayfield High School",
+    desc: "Graduated as Co-Valedictorian with a 4.0 unweighted GPA and earned AP Scholar with Distinction Award. Competed as a multi-sport athlete in Football and Wrestling.",
+    tags: ["Co-Valedictorian", "AP Scholar", "Ray Barron Scholarship"],
+  },
+  {
+    year: "Fall 2022",
+    role: "Started B.S. in Electrical Engineering",
+    org: "Colorado School of Mines",
+    desc: "Began undergraduate studies in Electrical Engineering, focusing on getting initial exposure to undergraduate research through First-Year Innovation and Research Scholar Training(FIRST)",
+    tags: ["Undergraduate Research", "Electrical Engineering"],
+  },
+  {
+    year: "Fall 2023",
+    role: "Became a Resident Advisor",
+    org: "Colorado School of Mines",
+    desc: "Selected as a Resident Advisor for the 2023-2024 academic year, providing mentorship and support to first-year students in the residence halls.",
+    tags: ["Resident Advisor"],
+  },
+
+  {
+    year: "Summer 2024",
+    role: "Photographed HSBC 7s Grand Final in Madrid",
+    org: "Tri Sports Media",
+    desc: "Traveled Europe most notably to Madrid, Spain to photograph the HSBC 7s Grand Final rugby tournament for Tri Sports Media. I also photographed the 2024 Olympic Repechage in Monaco",
+    tags: ["Travel", "Sports Photography"],
+  },
+
+  {
+    year: "Spring 2025",
+    role: "Took Introduction to Antennas Course",
+    org: "Colorado School of Mines",
+    desc: "Sparked interests in antenna systems and computational electromagnetics, which led to pursuing graduate research in these areas. Enrolled in the combined masters program to begin graduate research early and complete a thesis by May 2027.",
+    tags: ["Research", "Antennas", "Combined Masters Program"],
+  },
+
+  {
+    year: "Summer 2025",
+    role: "DSP Intern",
+    org: "Rincon Research Corporation",
+    desc: "Worked in a Group of 4 Interns to simulate and create a small scale realization of a bent pipe communication system leveraging low earth orbit (LEO) satellites.",
+    tags: ["Signal Processing", "Communications"],
+  },
+
+  {
+    year: "Fall 2025",
+    role: "Undergraduate Researcher",
+    org: "Defense Advanced Research Projects Agency (DARPA) - EMON",
+    desc: "While taking an independent study course in phased arrays and scattering applications, I designed a low-cost phase shifting network for generating structured waveforms to be exploited in advanced radar systems. Published and presented research at multiple conferences including the 2026 National Radio Science Meeting and the Viceroy Symposium.",
+    tags: ["Antenna Design", "Phased Arrays", "Research", "Publications"],
+  },
+
+  {
+    year: "Fall 2025",
+    role: "IEEE Eta Kappa Nu (HKN) Honor Society Inductee",
+    org: "IEEE HKN - Nu Pi Colorado School of Mines Chapter",
+    desc: "Was inducted into the IEEE Eta Kappa Nu (HKN) Honor Society as a Senior, recognizing academic excellence and leadership in the field of electrical engineering. Became News Correspondant chair for the Nu Pi chapter, responsible for sharing news and updates with members and the broader community.",
+    tags: ["Honor Society"],
+  },
+
+  {
+    year: "Spring 2026",
+    role: "Graduated with B.S. in Electrical Engineering",
+    org: "Colorado School of Mines",
+    desc: "Graduated with a Bachelor of Science in Electrical Engineering with Summa Cum Laude honors, earning multiple awards including the Outstanding Graduating Senior Award, 8x Dean's List recognition, and Second Place Overall in the Senior Design Showcase.",
+    tags: ["Outstanding Senior Award", "8x Dean's List", "Undergraduate Scholar Distinction", "Summa Cum Laude", "Second Place Overall in Senior Design Showcase"],
+  },
+  
+  {
+    year: "Summer 2026",
+    role: "DSP Intern",
+    org: "Zeta Associates",
+    desc: "Worked in a Group of 4 Interns to localize unmanned aerial vehicles (UAVs) and other RF emitters using passive sensors and advanced signal processing techniques.",
+    tags: ["Antenna Design", "Phased Arrays", "Research", "Publications"],
+  },
+
+  {
+    year: "2026 — Present",
+    role: "Master's Thesis Researcher",
+    org: "Colorado School of Mines · ARC Group",
+    desc: "Conducting graduate research involving the experimental characerization of scattering interactions under structured beam illumination using a custom phased array system.",
+    tags: ["Antennas", "Phased Arrays", "Electromagnetics"],
+  },
+];
+---
+
+<section class="tl-section">
+  <h2 class="tl-heading">My Journey</h2>
+  <div class="tl-line-wrap">
+    <div class="tl-spine"></div>
+    {items.map((item) => (
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-year">{item.year}</p>
+        <div class="tl-card">
+          <p class="tl-role">{item.role}</p>
+          <p class="tl-org">{item.org}</p>
+          <p class="tl-desc">{item.desc}</p>
+          <div class="tl-tags">
+            {item.tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll(".tl-item");
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+        } else {
+          e.target.classList.remove("visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  items.forEach((el) => obs.observe(el));
+</script>
+
+<style>
+  .tl-section {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 0 40px;
+  }
+
+  .tl-heading {
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .tl-line-wrap {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .tl-spine {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--glass-border);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .tl-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -27px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--glass-border);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .tl-item.visible .tl-dot {
+    border-color: rgba(100, 160, 220, 0.8);
+    background: var(--blue-tint);
+  }
+
+  .tl-year {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .tl-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.2s;
+  }
+
+  .tl-card:hover {
+    border-color: rgba(100, 160, 220, 0.5);
+  }
+
+  .tl-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+
+  .tl-org {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0 0 10px;
+  }
+
+  .tl-desc {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .tl-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  @media (max-width: 480px) {
+    .tl-section {
+      padding: 0 16px;
+    }
+  }
+</style>
