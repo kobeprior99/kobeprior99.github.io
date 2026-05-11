@@ -1,21 +1,57 @@
+/* ============================================================
+   BASE
+   ============================================================ */
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f0f0f0;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: Arial, sans-serif;
-    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+main {
+    flex: 1;
 }
 
 
-/* header */
+/* ============================================================
+   CSS VARIABLES — LIGHT & DARK
+   ============================================================ */
+html:not(.dark) {
+    --bg: #f0f0f0;
+    --bg-secondary: #e8f4fb;
+    --text: #333;
+    --text-muted: #5a7a9a;
+    --blue-tint: rgba(180, 210, 240, 0.35);
+    --glass-bg: rgba(180, 210, 240, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow: rgba(100, 160, 220, 0.15);
+}
+
+html.dark {
+    --bg: #0e1b2a;
+    --bg-secondary: #1a2a3a;
+    --text: #e8f4fd;
+    --text-muted: #8aafc8;
+    --blue-tint: rgba(30, 60, 100, 0.5);
+    --glass-bg: rgba(20, 40, 70, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
 header {
-    background: rgba(180, 210, 240, 0.35);
+    background: var(--blue-tint);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 4px 24px rgba(100, 160, 220, 0.15);
-    color: #1a3a5c;
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 24px var(--shadow);
+    color: var(--text);
     padding: 10px 40px;
     font-size: 2rem;
     display: flex;
@@ -40,12 +76,12 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #1a3a5c;
+    color: var(--text);
     font-size: 1rem;
     padding: 8px 20px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: background 0.2s;
@@ -55,28 +91,39 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.4);
 }
 
-.bio-location {
-    font-size: 0.9rem;
-    color: #5a7a9a;
-    margin-top: -12px;
-    margin-bottom: 20px;
-    letter-spacing: 0.03em;
+nav a.active-link {
+    background: rgba(180, 210, 240, 0.6);
+    border-color: rgba(100, 160, 220, 0.7);
+    font-weight: 600;
 }
 
-main {
-    flex: 1;
+#theme-toggle {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
 }
 
-/* footer */
+#theme-toggle:hover {
+    background: var(--blue-tint);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer {
-    background: rgba(180, 210, 240, 0.35);
+    background: var(--blue-tint);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 -4px 24px rgba(100, 160, 220, 0.15);
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -4px 24px var(--shadow);
     padding: 30px 40px;
     margin-top: 60px;
-    color: #1a3a5c;
+    color: var(--text);
 }
 
 .footer-inner {
@@ -99,7 +146,7 @@ footer {
 }
 
 .footer-contact a {
-    color: #1a3a5c;
+    color: var(--text);
     text-decoration: none;
     font-size: 0.95rem;
 }
@@ -119,13 +166,13 @@ footer {
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #1a3a5c;
+    color: var(--text);
     text-decoration: none;
     font-size: 0.95rem;
     padding: 6px 14px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: background 0.2s;
@@ -141,7 +188,20 @@ footer {
     margin: 0;
 }
 
-/* about page */
+.inline-link {
+    color: #1a3a5c;
+    text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.inline-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -160,33 +220,41 @@ footer {
 
 .about-bio h1 {
     font-size: 2rem;
-    color: #1a3a5c;
+    color: var(--text);
     margin-bottom: 16px;
 }
 
 .about-bio p {
     font-size: 1rem;
     line-height: 1.8;
-    color: #333;
+    color: var(--text);
     margin-bottom: 24px;
+}
+
+.bio-location {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: -12px;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
 }
 
 .resume-link {
     display: inline-block;
     text-decoration: none;
-    color: #1a3a5c;
+    color: var(--text);
     font-size: 0.95rem;
     padding: 10px 24px;
     border-radius: 8px;
-    border: 1px solid rgba(100, 160, 220, 0.4);
-    background: rgba(180, 210, 240, 0.25);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: background 0.2s;
 }
 
 .resume-link:hover {
-    background: rgba(180, 210, 240, 0.5);
+    background: var(--blue-tint);
 }
 
 @media (max-width: 640px) {
@@ -202,7 +270,10 @@ footer {
     }
 }
 
-/* projects */
+
+/* ============================================================
+   PROJECTS PAGE
+   ============================================================ */
 .projects-container {
     max-width: 1100px;
     margin: 80px auto;
@@ -211,7 +282,7 @@ footer {
 
 .projects-title {
     font-size: 2rem;
-    color: #1a3a5c;
+    color: var(--text);
     margin-bottom: 24px;
     text-align: center;
 }
@@ -226,9 +297,9 @@ footer {
 .filter-btn {
     padding: 8px 24px;
     border-radius: 8px;
-    border: 1px solid rgba(100, 160, 220, 0.4);
-    background: rgba(180, 210, 240, 0.2);
-    color: #1a3a5c;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text);
     font-size: 0.95rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -236,7 +307,7 @@ footer {
 
 .filter-btn.active,
 .filter-btn:hover {
-    background: rgba(180, 210, 240, 0.5);
+    background: var(--blue-tint);
     border-color: rgba(100, 160, 220, 0.7);
 }
 
@@ -251,17 +322,17 @@ footer {
     flex-direction: column;
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(180, 210, 240, 0.2);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 20px rgba(100, 160, 220, 0.1);
+    box-shadow: 0 4px 20px var(--shadow);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(100, 160, 220, 0.2);
+    box-shadow: 0 8px 32px var(--shadow);
 }
 
 .project-image img {
@@ -280,13 +351,13 @@ footer {
 
 .project-info h3 {
     font-size: 1.1rem;
-    color: #1a3a5c;
+    color: var(--text);
     margin: 0;
 }
 
 .project-info p {
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text);
     line-height: 1.6;
     margin: 0;
 }
@@ -303,29 +374,33 @@ footer {
     font-size: 0.75rem;
     padding: 3px 10px;
     border-radius: 20px;
-    background: rgba(100, 160, 220, 0.2);
-    color: #1a3a5c;
-    border: 1px solid rgba(100, 160, 220, 0.3);
+    background: var(--glass-bg);
+    color: var(--text);
+    border: 1px solid var(--glass-border);
 }
 
 .read-more {
     display: inline-block;
     margin-top: 12px;
     text-decoration: none;
-    color: #1a3a5c;
+    color: var(--text);
     font-size: 0.9rem;
     padding: 7px 18px;
     border-radius: 8px;
-    border: 1px solid rgba(100, 160, 220, 0.4);
-    background: rgba(180, 210, 240, 0.2);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
     transition: background 0.2s;
     align-self: flex-start;
 }
 
 .read-more:hover {
-    background: rgba(180, 210, 240, 0.5);
+    background: var(--blue-tint);
 }
 
+
+/* ============================================================
+   PROJECT DETAIL PAGE
+   ============================================================ */
 .project-detail {
     max-width: 800px;
     margin: 60px auto;
@@ -335,7 +410,7 @@ footer {
 .back-link {
     display: inline-block;
     margin-bottom: 24px;
-    color: #1a3a5c;
+    color: var(--text);
     text-decoration: none;
     font-size: 0.95rem;
 }
@@ -350,19 +425,19 @@ footer {
     object-fit: cover;
     border-radius: 16px;
     margin-bottom: 32px;
-    box-shadow: 0 8px 32px rgba(100, 160, 220, 0.2);
+    box-shadow: 0 8px 32px var(--shadow);
 }
 
 .detail-content h1 {
     font-size: 2rem;
-    color: #1a3a5c;
+    color: var(--text);
     margin-bottom: 12px;
 }
 
 .detail-content p {
     font-size: 1rem;
     line-height: 1.8;
-    color: #333;
+    color: var(--text);
     margin-top: 20px;
     white-space: pre-line;
 }
@@ -376,7 +451,7 @@ footer {
 .carousel-track-wrapper {
     overflow: hidden;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(100, 160, 220, 0.2);
+    box-shadow: 0 8px 32px var(--shadow);
 }
 
 .carousel-track {
@@ -399,10 +474,10 @@ footer {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(180, 210, 240, 0.5);
+    background: var(--glass-bg);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: #1a3a5c;
+    border: 1px solid var(--glass-border);
+    color: var(--text);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -413,16 +488,11 @@ footer {
 }
 
 .carousel-btn:hover {
-    background: rgba(180, 210, 240, 0.8);
+    background: var(--blue-tint);
 }
 
-.carousel-btn.prev {
-    left: 12px;
-}
-
-.carousel-btn.next {
-    right: 12px;
-}
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
 
 .carousel-dots {
     display: flex;
@@ -441,149 +511,19 @@ footer {
 }
 
 .dot.active {
-    background: #1a3a5c;
+    background: var(--text);
 }
 
-/* Dark mode variables */
-html.dark {
-    --bg: #0e1b2a;
-    --bg-secondary: #1a2a3a;
-    --text: #e8f4fd;
-    --text-muted: #8aafc8;
-    --blue-tint: rgba(30, 60, 100, 0.5);
-    --glass-bg: rgba(20, 40, 70, 0.5);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --shadow: rgba(0, 0, 0, 0.4);
-}
 
-html:not(.dark) {
-    --bg: #f0f0f0;
-    --bg-secondary: #e8f4fb;
-    --text: #333;
-    --text-muted: #5a7a9a;
-    --blue-tint: rgba(180, 210, 240, 0.35);
-    --glass-bg: rgba(180, 210, 240, 0.2);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --shadow: rgba(100, 160, 220, 0.15);
-}
-
-/* Apply variables */
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-header {
-    background: var(--blue-tint);
-    border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 24px var(--shadow);
-    color: var(--text);
-}
-
-footer {
-    background: var(--blue-tint);
-    border-top: 1px solid var(--glass-border);
-    box-shadow: 0 -4px 24px var(--shadow);
-    color: var(--text);
-}
-
-nav a,
-.footer-links a {
-    color: var(--text);
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-}
-
-.about-bio h1,
-.projects-title,
-.detail-content h1 {
-    color: var(--text);
-}
-
-.about-bio p,
-.project-info p,
-.detail-content p {
-    color: var(--text);
-}
-
-.bio-location {
-    color: var(--text-muted);
-}
-
-.project-card {
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-}
-
-.project-info h3 {
-    color: var(--text);
-}
-
-.filter-btn {
-    color: var(--text);
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-    background: var(--blue-tint);
-}
-
-.resume-link {
-    color: var(--text);
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-}
-
-.tag {
-    color: var(--text);
-    background: var(--glass-bg);
-    border-color: var(--glass-border);
-}
-
-.back-link {
-    color: var(--text);
-}
-
-/* Toggle button */
-#theme-toggle {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.2s;
-}
-
-#theme-toggle:hover {
-    background: var(--blue-tint);
-}
-
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
 html.dark #logo {
     filter: invert(1);
 }
 
 html:not(.dark) #theme-toggle {
     filter: grayscale(1) brightness(0);
-}
-
-html.dark .read-more {
-    color: #a8d4f5;
-    background: rgba(30, 80, 140, 0.4);
-    border-color: rgba(100, 180, 255, 0.3);
-}
-
-html.dark .read-more:hover {
-    background: rgba(30, 80, 140, 0.6);
-}
-
-nav a.active-link {
-    background: rgba(180, 210, 240, 0.6);
-    border-color: rgba(100, 160, 220, 0.7);
-    font-weight: 600;
 }
 
 html.dark nav a.active-link {
@@ -595,16 +535,16 @@ html.dark .footer-contact a {
     color: #dacb56;
 }
 
-.inline-link {
-    color: #1a3a5c;
-    text-decoration: none;
-    transition: color 0.2s, text-decoration 0.2s;
-}
-
-.inline-link:hover {
-    text-decoration: underline;
-}
-
 html.dark .inline-link {
     color: #dacb56;
+}
+
+html.dark .read-more {
+    color: #a8d4f5;
+    background: rgba(30, 80, 140, 0.4);
+    border-color: rgba(100, 180, 255, 0.3);
+}
+
+html.dark .read-more:hover {
+    background: rgba(30, 80, 140, 0.6);
 }
