@@ -563,3 +563,36 @@ html.dark .read-more {
 html.dark .read-more:hover {
     background: rgba(30, 80, 140, 0.6);
 }
+
+
+/* iphone media queries */
+@media (max-width: 768px) {
+    nav a {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    #theme-toggle {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+
+    header {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        padding: 5px 7px;
+        font-size: 0.78rem;
+    }
+
+    nav {
+        gap: 5px;
+    }
+
+    header {
+        padding: 8px;
+    }
+}
