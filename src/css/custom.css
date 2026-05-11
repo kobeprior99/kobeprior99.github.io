@@ -594,3 +594,17 @@ html.dark nav a.active-link {
 html.dark .footer-contact a {
     color: #dacb56;
 }
+
+.inline-link {
+    color: #1a3a5c;
+    text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.inline-link:hover {
+    text-decoration: underline;
+}
+
+html.dark .inline-link {
+    color: #dacb56;
+}
