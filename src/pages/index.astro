@@ -13,8 +13,19 @@ import Timeline from "../components/Timeline.astro";
         <img src="/Headshot.jpg" alt="Kobe Prior" />
       </div>
       <div class="about-bio">
-        <h1>Kobe Prior</h1>
-        <p class="bio-location">Golden, CO &mdash; Colorado School of Mines</p>
+        <div class="bio-name-row">
+          <h1>Kobe Prior</h1>
+          <img
+            src="/hkn-logo.png"
+            alt="IEEE Eta Kappa Nu"
+            width="36"
+            height="36"
+            class="hkn-badge"
+          />
+        </div>
+        <p class="bio-location">
+          Golden, CO · M.S. Electrical Engineering Candidate
+        </p>
         <p>
           I’m an Electrical Engineer from
           <a href="https://www.mines.edu/" target="_blank" class="inline-link">
@@ -57,5 +68,4 @@ import Timeline from "../components/Timeline.astro";
     </div>
   </section>
   <Timeline />
-
 </Layout>
