@@ -17,7 +17,6 @@
 </header>
 
 <script>
-    // Active nav link
     const navLinks = document.querySelectorAll<HTMLAnchorElement>("nav a");
     navLinks.forEach((link) => {
         if (
@@ -31,13 +30,18 @@
 
     const toggle = document.getElementById("theme-toggle") as HTMLButtonElement;
     const root = document.documentElement;
-    // Load saved preference
-    if (localStorage.getItem("theme") === "dark") {
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const saved = localStorage.getItem("theme");
+    const isDark = saved ? saved === "dark" : prefersDark;
+
+    if (isDark) {
         root.classList.add("dark");
         toggle.textContent = "☀️";
     } else {
         toggle.textContent = "🌙";
     }
+
     toggle.addEventListener("click", () => {
         root.classList.toggle("dark");
         const isDark = root.classList.contains("dark");
