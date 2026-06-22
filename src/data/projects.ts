@@ -1,3 +1,9 @@
+export interface ProjectResources {
+  label: string;
+  url: string;
+  type: "paper" | "presentation" | "report" | "code" | "other"; 
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -6,6 +12,7 @@ export interface Project {
   images: string[];
   tags: string[];
   category: ("hardware" | "software")[];
+  resources ? : ProjectResources[];
 }
 
 export const projects: Project[] = [
@@ -16,8 +23,26 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the phased array project goes here.`,
     images: ["/projects/PArray.jpg"],
     tags: ["RF", "Antenna Systems", "SDR", "Embedded Design"],
-    category: ["hardware"]
+    category: ["hardware"],
+    resources: [
+        {
+          label: "Target Illumination by Structured Beam for Advanced Radar Scattering Analysis",
+          url: "presentations/Kobe_MURF_Presentation-V6.pdf",
+          type: "presentation"
+        },
+        {
+          label: "16-Element Phased Array for Coarse AoA Estimation",
+          url: "presentations/Prior_16_Port_Phasing Network.pdf",
+          type: "presentation"
+        },
+        {
+          label: "Low-cost Software-controlled Phase Shifting Network for Generating Spatiotemporally Variable Waveforms",
+          url: "presentations/NRSM_Prior_Rev3.pdf",
+          type: "presentation"
+        },
+      ]
   },
+
   {
     slug: 'smart_pick',
     title: "Smart Pick for Rock Cutting",
@@ -27,6 +52,7 @@ export const projects: Project[] = [
     tags: ["Printed Circuit Board Design", "Embedded Systems", "Sensor Integration", "Data Analysis"],
     category: ["hardware"]
   },
+
   {
     slug: "BPF",
     title: "Coupled Line Bandpass Filter with 2nd Harmonic Suppression",
@@ -36,6 +62,7 @@ export const projects: Project[] = [
     tags: ["Passive MW Devices", "Keysight ADS", "Filter Design"],
     category: ["hardware"]
   },
+
   {
     slug: "patch-antenna",
     title: "X-Band Microstrip Patch Antennas",
@@ -55,6 +82,7 @@ export const projects: Project[] = [
     tags: ["Python", "Data Visualization", "Google Sheets API"],
     category: ["software"]
   },
+
   {
     slug: "low_noise_amplifier",
     title: "Low Noise Amplifier Design and Fabrication",
@@ -64,15 +92,17 @@ export const projects: Project[] = [
     tags: ["Amplifier Design", "BFP650", "KeysightADS", "Active Microwave Devices"],
     category: ["hardware"]
   },
+
   {
     slug: "kalman_filter",
     title: "Kalman Filter Implementation",
     description: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were in  MATLAB and Simulink.",
-    fullDescription: `Full detailed writeup for the Kalman filter project goes here.`,
+    fullDescription: "Full detailed writeup for the Kalman filter project goes here.",
     images: ["/projects/Kalman_Filter.png"],
     tags: ["MATLAB", "Kalman Filter", "State Estimation"],
     category: ["software"]
   }, 
+
   {
     slug: "Bent_Pipe",
     title: "Bent Pipe Communication System",
@@ -83,6 +113,7 @@ export const projects: Project[] = [
     category: ["software", "hardware"]
 
   },
+
   {
     slug: "Stegonagraphy",
     title: "Stegonagraphy in C++",
@@ -92,6 +123,7 @@ export const projects: Project[] = [
     tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
     category: ["software"]
   },
+
   {
     slug: "IR eavesdropper",
     title: "Infrared Eavesdropping",
@@ -101,15 +133,24 @@ export const projects: Project[] = [
     tags: ["Embedded C", "Embedded Systems", "Finite State Machines", "Signal Processing"],
     category: ["software", "hardware"]
   },
+
   {
     slug: "Antenna_Demo",
     title: "Antenna Demonstration Module",
     description: "For my first semester involved in undergraduate research I worked on the hardware and software for a antenna demonstration module that transmitted with one antenna and reported the relative gain at the second antenna. This allowed for the dynamic demonstration of antenna propagation phenomenon like free space path loss and polarization loss. The module used an all in one touch screen raspberry pi and an ADALM PLUTO software defined radio driven by GNU radio.",
-    fullDescription: "",
+    fullDescription: "The Antenna Demonstration module demonstrated two propagation phenomena: free space path loss and polarization loss. The module consisted of two antennas, a software defined radio, and an all-in-one touch screen Raspberry Pi Module. The software defined radio transmitted a signal from one antenna and the second received the signal and reported the relative gain on the output display which could be used to demonstrate the effects of free space path loss and polarization loss. The software defined radio was driven by GNU Radio.",
     images: ["/projects/Antenna_Demo.jpeg"],
     tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
-    category: ["software", "hardware"]
+    category: ["software", "hardware"],
+    resources: [
+    {
+      label: "Hardware and Software Development of Antenna Demonstration Module",
+      url: "presentations/AntennaDemonstrationPoster.pdf",
+      type: "presentation"
+    }
+    ]
   },
+
   {
     slug: "SEED_BOT",
     title: "SEED Lab Autonomous Robot",
@@ -119,5 +160,4 @@ export const projects: Project[] = [
     tags: ["Computer Vision", "Python", "Arduino", "Raspberry Pi"],
     category: ["software", "hardware"]
   }
-
 ];
