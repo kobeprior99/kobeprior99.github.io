@@ -47,7 +47,7 @@ export const projects: Project[] = [
     slug: "Drone-Localization",
     title: "3D Drone Localization using Passive Receivers",
     description: "In the 2026 Intern Cohort at Zeta Associates I worked on a project to localize a drone and create a dynamic visualization of the estimated position of the drone with a 95 percent confidence ellipsoid.",
-    fullDescription: `Full detailed writeup for the drone project goes here.`,
+    fullDescription: "The pipeline to go from downlink from drone to geolocaiton of drone involves capturing time aligned samples, detecting a downlink burst, identifying subsample time delay between signals using a cross ambiguity function, feeding the time delays between 3 pairs of collectors into a Gauss-Newton solver, then plotting the solves. The components that I was responsible for on this project included the geolocation engine, the CAF and algorithmic speedups, and the visualization effort. It was increadibly rewarding to familiarize myself with the mathmatics behind geolocation math and apply it to a very real world problem.",
     images: ["/projects/droneloc/geo_media.png", '/projects/droneloc/droneloc2.jpg', '/projects/droneloc/droneloc3.jpg', '/projects/droneloc/caf_peak.png'],
     tags: ["Geolocation", "TDOA", "Cross Ambiguity Function", "Cesium", "Python", "C++"],
     category: ["software", "hardware"]
