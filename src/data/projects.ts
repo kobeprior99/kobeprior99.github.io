@@ -94,7 +94,7 @@ export const projects: Project[] = [
     slug: "patch-antenna",
     title: "X-Band Microstrip Patch Antennas",
     description: "Patch antennas were designed for 8.5 GHz using a finite difference time domain full-wave EM solver called CEMS, the patches were manufactured and the resonant frequency was confirmed with good agreement to simulation using a vector network analyzer.",
-    fullDescription: `Full detailed writeup for the patch antenna project goes here.`,
+    fullDescription: 'The Introduction to Antennas course was the first time that I was enamoured with the thought of being some kind of RF engineer. The course was taught by Dr. Atef Z. Elsherbeni, a world renowned expert in the field of computational electromagnetics. He taught students how to simulate their antenna designs using a finite difference time domain full-wave EM solver called CEMS. One part of the course was fabricating and measuring the performance of a microstrip patch antenna. My antenna was designed for 4003C rogers substrate with a dielectric constant of 3.38 and a thickness of 60 mils. The patch was designed to resonate at 8.5 GHz (x-band) and the resonant frequency was confirmed with good agreement to simulation using a vector network analyzer.',
     images: ["/projects/xband_antenna/X-band.jpg"],
     tags: ["Antenna", "HFSS"],
     category: ["hardware"], 
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     slug: "finance_dashboard",
     title: "Finance Dashboard",
     description: "A personal project using python, web-based graphical user interface to report data about my current finances using a google sheet api.",
-    fullDescription: `Full detailed writeup for the patch antenna project goes here.`,
+    fullDescription: 'This was one of the first personal projects I worked on to learn python that related to my every day life. I am someone who spends a lot of time thinking about personal finance and I wanted to create a dashboard that would allow me to visualize my current progress towards financial goals as well as visualize whether or not I was on track to meet those goals. The dashboard uses a google sheet api to pull data from a google sheet that I use to track my finances and then uses matplotlib to create visualizations of the data. The dashboard is built using the nicegui python library and is a web-based graphical user interface. I interact with the google sheet through the command line by typing `finance keyword parameters` I can log recent expenses, add new income, adjust the current value of my investments and bank accounts.',
     images: ["/projects/Finance_dash/Finance_Dashboard.png"],
     tags: ["Python", "Data Visualization", "Google Sheets API"],
     category: ["software"]
