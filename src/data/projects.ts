@@ -44,6 +44,16 @@ export const projects: Project[] = [
   },
 
   {
+    slug: "Drone-Localization",
+    title: "3D Drone Localization using Passive Receivers",
+    description: "In the 2026 Intern Cohort at Zeta Associates I worked on a project to localize a drone and create a dynamic visualization of the estimated position of the drone with a 95 percent confidence ellipsoid.",
+    fullDescription: `Full detailed writeup for the drone project goes here.`,
+    images: ["/projects/geo_media.png"],
+    tags: ["Geolocation", "TDOA", "Cross Ambiguity Function", "Cesium", "Python", "C++"],
+    category: ["software", "hardware"]
+  },
+
+  {
     slug: 'smart_pick',
     title: "Smart Pick for Rock Cutting",
     description: "An intelligent sensing system to monitor forces and vibrations on a rock cutting pick used in mining operations. The system is useful in identifying what rock is being cut and when the pick is wearing down.Our approach enables preventative pick replacement, reducing the risk of cascading failures and costly shutdowns. Additionally, real-time rock characterization helps operators avoid cutting non-profitable or highly abrasive materials—extending tool life and preventing contamination that can lead to downstream processing costs.",
