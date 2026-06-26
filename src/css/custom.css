@@ -1,7 +1,34 @@
 /* ============================================================
-   BASE
+   CSS VARIABLES — LIGHT & DARK
    ============================================================ */
+html:not(.dark) {
+    --bg: #f0f0f0;
+    --bg-secondary: #e8f4fb;
+    --text: #333;
+    --text-muted: #5a7a9a;
+    --blue-tint: rgba(180, 210, 240, 0.35);
+    --glass-bg: rgba(180, 210, 240, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --shadow: rgba(100, 160, 220, 0.15);
+    --accent: #1a3a5c;
+}
 
+html.dark {
+    --bg: #0e1b2a;
+    --bg-secondary: #1a2a3a;
+    --text: #e8f4fd;
+    --text-muted: #8aafc8;
+    --blue-tint: rgba(30, 60, 100, 0.5);
+    --glass-bg: rgba(20, 40, 70, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --accent: #dacb56;
+}
+
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 *,
 *::before,
 *::after {
@@ -26,33 +53,21 @@ main {
 
 
 /* ============================================================
-   CSS VARIABLES — LIGHT & DARK
+   SHARED UTILITIES
    ============================================================ */
-html:not(.dark) {
-    --bg: #f0f0f0;
-    --bg-secondary: #e8f4fb;
-    --text: #333;
-    --text-muted: #5a7a9a;
-    --blue-tint: rgba(180, 210, 240, 0.35);
-    --glass-bg: rgba(180, 210, 240, 0.2);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --shadow: rgba(100, 160, 220, 0.15);
+.inline-link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s;
 }
 
-html.dark {
-    --bg: #0e1b2a;
-    --bg-secondary: #1a2a3a;
-    --text: #e8f4fd;
-    --text-muted: #8aafc8;
-    --blue-tint: rgba(30, 60, 100, 0.5);
-    --glass-bg: rgba(20, 40, 70, 0.5);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --shadow: rgba(0, 0, 0, 0.4);
+.inline-link:hover {
+    text-decoration: underline;
 }
 
 
 /* ============================================================
-   HEADER
+   HEADER & NAV
    ============================================================ */
 header {
     background: var(--blue-tint);
@@ -61,12 +76,10 @@ header {
     border-bottom: 1px solid var(--glass-border);
     box-shadow: 0 4px 24px var(--shadow);
     color: var(--text);
-    padding: 10px 40px;
-    font-size: 2rem;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -87,6 +100,9 @@ nav {
 }
 
 nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: var(--text);
     font-size: 1rem;
@@ -97,9 +113,6 @@ nav a {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: background 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 nav a:hover {
@@ -161,7 +174,7 @@ footer {
 }
 
 .footer-contact a {
-    color: var(--text);
+    color: var(--accent);
     text-decoration: none;
     font-size: 0.95rem;
 }
@@ -203,16 +216,6 @@ footer {
     margin: 0;
 }
 
-.inline-link {
-    color: #1a3a5c;
-    text-decoration: none;
-    transition: color 0.2s, text-decoration 0.2s;
-}
-
-.inline-link:hover {
-    text-decoration: underline;
-}
-
 
 /* ============================================================
    ABOUT PAGE
@@ -231,6 +234,17 @@ footer {
     width: 100%;
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(100, 160, 220, 0.2);
+}
+
+.bio-name-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.bio-name-row h1 {
+    margin: 0;
 }
 
 .about-bio h1 {
@@ -254,23 +268,8 @@ footer {
     letter-spacing: 0.03em;
 }
 
-.bio-name-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-}
-
-.bio-name-row h1 {
-    margin: 0;
-}
-
 .hkn-badge {
     opacity: 0.85;
-}
-
-html.dark .hkn-badge {
-    filter: invert(1);
 }
 
 .resume-link {
@@ -291,26 +290,9 @@ html.dark .hkn-badge {
     background: var(--blue-tint);
 }
 
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        margin: 40px auto;
-        padding: 0 20px;
-    }
-    .bio-name-row {
-        justify-content: center;
-    }
-
-    .about-image img {
-        max-width: 220px;
-        margin: 0 auto;
-        display: block;
-    }
-}
 
 /* ============================================================
-   PROJECTS PAGE
+   PROJECTS PAGE — GRID & FILTERS
    ============================================================ */
 .projects-container {
     max-width: 1100px;
@@ -355,6 +337,10 @@ html.dark .hkn-badge {
     gap: 28px;
 }
 
+
+/* ============================================================
+   PROJECT CARD
+   ============================================================ */
 .project-card {
     display: flex;
     flex-direction: column;
@@ -419,6 +405,7 @@ html.dark .hkn-badge {
 
 .read-more {
     display: inline-block;
+    align-self: flex-start;
     margin-top: 12px;
     text-decoration: none;
     color: var(--text);
@@ -428,7 +415,6 @@ html.dark .hkn-badge {
     border: 1px solid var(--glass-border);
     background: var(--glass-bg);
     transition: background 0.2s;
-    align-self: flex-start;
 }
 
 .read-more:hover {
@@ -480,6 +466,10 @@ html.dark .hkn-badge {
     white-space: pre-line;
 }
 
+
+/* ============================================================
+   CAROUSEL
+   ============================================================ */
 .carousel {
     position: relative;
     width: 100%;
@@ -529,13 +519,8 @@ html.dark .hkn-badge {
     background: var(--blue-tint);
 }
 
-.carousel-btn.prev {
-    left: 12px;
-}
-
-.carousel-btn.next {
-    right: 12px;
-}
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
 
 .carousel-dots {
     display: flex;
@@ -559,6 +544,51 @@ html.dark .hkn-badge {
 
 
 /* ============================================================
+   PROJECT RESOURCES
+   ============================================================ */
+.project-resources {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.project-resources h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+.project-resources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+}
+
+.resource-link:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+.resource-icon {
+    font-size: 1em;
+}
+
+
+/* ============================================================
    DARK MODE OVERRIDES
    ============================================================ */
 html.dark #logo {
@@ -569,17 +599,13 @@ html:not(.dark) #theme-toggle {
     filter: grayscale(1) brightness(0);
 }
 
+html.dark .hkn-badge {
+    filter: invert(1);
+}
+
 html.dark nav a.active-link {
     background: rgba(30, 80, 140, 0.6);
     border-color: rgba(100, 180, 255, 0.4);
-}
-
-html.dark .footer-contact a {
-    color: #dacb56;
-}
-
-html.dark .inline-link {
-    color: #dacb56;
 }
 
 html.dark .read-more {
@@ -593,8 +619,14 @@ html.dark .read-more:hover {
 }
 
 
-/* iphone media queries */
+/* ============================================================
+   RESPONSIVE — TABLET & MOBILE
+   ============================================================ */
 @media (max-width: 768px) {
+    header {
+        padding: 8px 12px;
+    }
+
     nav a {
         padding: 6px 10px;
         font-size: 0.85rem;
@@ -605,66 +637,35 @@ html.dark .read-more:hover {
         font-size: 0.85rem;
     }
 
-    header {
-        padding: 8px 12px;
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .bio-name-row {
+        justify-content: center;
+    }
+
+    .about-image img {
+        max-width: 220px;
+        margin: 0 auto;
+        display: block;
     }
 }
 
 @media (max-width: 480px) {
-    nav a {
-        padding: 5px 7px;
-        font-size: 0.78rem;
+    header {
+        padding: 8px;
     }
 
     nav {
         gap: 5px;
     }
 
-    header {
-        padding: 8px;
+    nav a {
+        padding: 5px 7px;
+        font-size: 0.78rem;
     }
-}
-
-
-/* project resources */
-
-.project-resources {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border, #e2e8f0);
-}
-
-.project-resources h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.01em;
-}
-
-.project-resources ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.resource-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.95rem;
-  color: var(--color-accent, #3b82f6);
-  text-decoration: none;
-  transition: opacity 0.15s ease;
-}
-
-.resource-link:hover {
-  opacity: 0.75;
-  text-decoration: underline;
-}
-
-.resource-icon {
-  font-size: 1em;
 }
