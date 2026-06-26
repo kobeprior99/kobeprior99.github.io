@@ -19,9 +19,9 @@ export const projects: Project[] = [
   {
     slug: "phased-array",
     title: "Custom Phased Array for Scattering Analysis",
-    description: "A custom printed circuit board utilizes 5 4:1 Wilkinson power dividers to split 1 input channel into 16 equal amplitude output channels. Each output channel has a digital phase shifter (PE44820) controlled by an STM microcontroller. The software defined radio connects to the phase shifting network and an external probe antenna to probe scattered power similar to monostatic radar.",
-    fullDescription: `Full detailed writeup for the phased array project goes here.`,
-    images: ["/projects/parray/PArray.jpg", "/projects/parray/parray2.jpg", "/projects/parray/parray3.jpg", "/projects/parray/parray4.jpg", "/projects/parray/parray5.jpg", "/projects/parray/parray6.jpg"],
+    description: "A custom  printed circuit board utilizes 5 4:1 Wilkinson power dividers to split 1 input channel into 16 equal amplitude output channels. Each output channel has a digital phase shifter (PE44820) controlled by an STM microcontroller. The software defined radio connects to the phase shifting network and an external probe antenna to probe scattered power similar to monostatic radar.",
+    fullDescription: "I first started working on this project during the Fall semester of my senior year of undergraduate studies at Mines in a course called Phased Arrays and Scattering Applications. The core component of the low-cost 16 port phasing network is the PE44820 digital phase shifter from Peregrine Semiconductor. The phase shifters share three digital lines (SPI), and are controlled by an STM microcontroller which receives commands over USB from a computer hosting a graphical user interface, parses the commands into phase words and sends them to each phase shifter with a unique 4 bit address that allow each phase shifter to be individually controlled. Then a full-duplex software defined radio can be used as a signal source and sink for the system allowing radar like characterization of scattering or demonstration of coarse angle of arrival estimation.",
+    images: ["/projects/parray/PArray.jpg","/projects/parray/block-diagram.png", "/projects/parray/parray2.jpg", "/projects/parray/parray3.jpg", "/projects/parray/parray4.jpg", "/projects/parray/parray5.jpg", "/projects/parray/parray6.jpg"],
     tags: ["RF", "Antenna Systems", "SDR", "Embedded Design"],
     category: ["hardware"],
     resources: [
