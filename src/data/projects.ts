@@ -114,10 +114,17 @@ export const projects: Project[] = [
     slug: "low_noise_amplifier",
     title: "Low Noise Amplifier Design and Fabrication",
     description: "For the final project in mirowave devices (EENG 529) I worked in a group to design a full-duplex RF frontend, my component was the low noise amplifier. The LNA was designed around the Infineon BFP650 bipolar transistor using a common emitter topology with a single voltage bias and a resistive current divider generating appopriate base current and collector emitter voltage for desired class A operation. The simulation was performed in Keysight ADS and the amplifier was fabricated on a 60 mil 1oz copper Rogers RO3003C substrate. The amplifier was tested using a vector network analyzer and the measured gain and linearity figure were in good agreement with simulation.",
-    fullDescription: `Full detailed writeup for the low noise amplifier project goes here.`,
+    fullDescription: `For the final project in mirowave devices (EENG 529) I worked in a group to design a full-duplex RF frontend, my component was the low noise amplifier. The LNA was designed around the Infineon BFP650 bipolar transistor using a common emitter topology with a single voltage bias and a resistive current divider generating appopriate base current and collector emitter voltage for desired class A operation. The simulation was performed in Keysight ADS and the amplifier was fabricated on a 60 mil 1oz copper Rogers RO3003C substrate. The amplifier was tested using a vector network analyzer and the measured gain and linearity figure were in good agreement with simulation.`,
     images: ["/projects/LNA/LNA.jpg", "/projects/LNA/lna2.jpg", "/projects/LNA/lna3.jpg", "/projects/LNA/lna4.jpg", "/projects/LNA/lna5.jpg", "/projects/LNA/lna6.jpg"],
     tags: ["Amplifier Design", "BFP650", "KeysightADS", "Active Microwave Devices"],
-    category: ["hardware"]
+    category: ["hardware"], 
+    resources: [
+      {
+        label: "Active Microwave Devices Final Report", 
+        url: '/projects/LNA/final_report.pdf', 
+        type: 'report'
+      }
+    ]
   },
 
   {
