@@ -48,7 +48,7 @@ export const projects: Project[] = [
     title: "3D Drone Localization using Passive Receivers",
     description: "In the 2026 Intern Cohort at Zeta Associates I worked on a project to localize a drone and create a dynamic visualization of the estimated position of the drone with a 95 percent confidence ellipsoid.",
     fullDescription: `Full detailed writeup for the drone project goes here.`,
-    images: ["/projects/droneloc/geo_media.png", '/projects/droneloc/droneloc2.jpg', '/projects/droneloc/droneloc3.jpg'],
+    images: ["/projects/droneloc/geo_media.png", '/projects/droneloc/droneloc2.jpg', '/projects/droneloc/droneloc3.jpg', '/projects/droneloc/caf_peak.png'],
     tags: ["Geolocation", "TDOA", "Cross Ambiguity Function", "Cesium", "Python", "C++"],
     category: ["software", "hardware"]
   },
