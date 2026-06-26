@@ -188,20 +188,44 @@ export const projects: Project[] = [
     slug: "Stegonagraphy",
     title: "Stegonagraphy in C++",
     description: "Embedded messages into pixels of an image using a C++ program. The program ecodes on red blue or green color channel and the intensity of each pixel is used to encode 8 bits of data. The program can also decode the message from the image.",
-    fullDescription: "Full detailed writeup for Stegonagraphy in C++ project goes here.",
+    fullDescription: "Embedded messages into pixels of an image using a C++ program. The program ecodes on red blue or green color channel and the intensity of each pixel is used to encode 8 bits of data. The program can also decode the message from the image.",
     images: ["/projects/stegonagraphy/stegonagraphy.jpeg"],
     tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
-    category: ["software"]
+    category: ["software"],
+    resources: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/kobeprior99/Stegonagraph-inator",
+        type: "code"
+      }
+    ]
   },
 
   {
     slug: "IR eavesdropper",
     title: "Infrared Eavesdropping",
     description: "Collaborated with Blane Miller and Cooper Hammond on an embedded systems project exposing vulnerabilities in infrared (IR) communication and proposing a secure alternative. This multidisciplinary project involved designing software, implementing signal processing techniques, and addressing security challenges in communication protocols.",
-    fullDescription: "Full description here",
+    fullDescription: "Collaborated with Blane Miller and Cooper Hammond on an embedded systems project exposing vulnerabilities in infrared (IR) communication and proposing a secure alternative. This multidisciplinary project involved designing software, implementing signal processing techniques, and addressing security challenges in communication protocols.",
     images: ["/projects/Eavesdropper/eavesdrop.png"],
     tags: ["Embedded C", "Embedded Systems", "Finite State Machines", "Signal Processing"],
-    category: ["software", "hardware"]
+    category: ["software", "hardware"],
+    resources: [
+      {
+        label: "Final Presentation",
+        url: "/projects/Eavesdropper/final-presentation.pdf",
+        type: "presentation"
+      },
+      {
+        label: "Demonstration video ",
+        url: "https://youtu.be/NZAeMqaXlls",
+        type: "presentation"
+      },
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/kobeprior99/IR_Eavesdrop",
+        type: "code"
+      }
+    ]
   },
 
   {
@@ -226,9 +250,27 @@ export const projects: Project[] = [
     title: "SEED Lab Autonomous Robot",
     description: "For a course designed to expose electrical engineering stduetns to the design process, myself and 3 other students designed a built an autonomoous robot that navigated a course using aruco markers with different colored arrows to indicate the direction the robot should turn. The robot was built using an arduino microcontroller, a motor driver, and a camera for computer vision.",
     fullDescription: "insert full description here",
-    images: ["/projects/seedbot/Seed_Bot.jpeg"],
+    images: ["/projects/seedbot/proj_description.png","/projects/seedbot/Seed_Bot.jpeg", "/projects/seedbot/arrow_detection.png"],
     tags: ["Computer Vision", "Python", "Arduino", "Raspberry Pi"],
-    category: ["software", "hardware"]
+    category: ["software", "hardware"],
+    resources: [
+    {
+      label: "GitHub Repository",
+      url: "https://github.com/kobeprior99/SeedLab",
+      type: "code"
+    },
+    {
+      label: "Final Video Demonstration",
+      url: "https://www.youtube.com/watch?v=ndHVUf-aqEA",
+      type: "code"
+    },
+    {
+      label: "Final Presentation",
+      url: "https://www.linkedin.com/in/kobeprior/overlay/Project/852314179/treasury/?profileId=ACoAADF3jSwBYvQMZfxcLtG_3AwMNK0esRQeXgA",
+      type: "presentation"
+    }
+
+    ]
   },
   {
     slug: "powersupply",
