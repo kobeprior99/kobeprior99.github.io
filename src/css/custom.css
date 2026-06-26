@@ -621,3 +621,47 @@ html.dark .read-more:hover {
         padding: 8px;
     }
 }
+
+
+/* project resources */
+
+.project-resources {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+}
+
+.project-resources h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.project-resources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--color-accent, #3b82f6);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.resource-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+.resource-icon {
+  font-size: 1em;
+}

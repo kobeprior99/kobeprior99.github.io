@@ -1,4 +1,5 @@
 ---
+import "../../css/custom.css";
 import Layout from "../../layouts/Layout.astro";
 import { projects } from "../../data/projects.ts";
 
@@ -45,6 +46,25 @@ const { project } = Astro.props;
         {project.tags.map((tag) => <span class="tag">{tag}</span>)}
       </div>
       <p>{project.fullDescription}</p>
+    {project.resources && project.resources.length > 0 && (
+      <div class="project-resources">
+        <h2>Related Presentations & Papers</h2>
+        <ul>
+          {project.resources.map((res) => (
+            <li>
+              <a href={res.url} target="_blank" rel="noopener noreferrer" class={`resource-link resource-${res.type}`}>
+                {res.type === "paper" && <span class="resource-icon">📄</span>}
+                {res.type === "presentation" && <span class="resource-icon">📊</span>}
+                {res.type === "report" && <span class="resource-icon">📋</span>}
+                {res.type === "code" && <span class="resource-icon">💻</span>}
+                {res.type === "other" && <span class="resource-icon">🔗</span>}
+                {res.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
     </div>
   </div>
 </Layout>
