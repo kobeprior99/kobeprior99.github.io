@@ -125,10 +125,17 @@ export const projects: Project[] = [
     title: "Kalman Filter Implementation",
     description: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were in  MATLAB and Simulink.",
     fullDescription: "Full detailed writeup for the Kalman filter project goes here.",
-    images: ["/projects/Kalman/Kalman_Filter.png"],
+    images: ["/projects/Kalman/kalman_cover.png","/projects/Kalman/Kalman_Filter.png"],
     tags: ["MATLAB", "Kalman Filter", "State Estimation"],
-    category: ["software"]
-  }, 
+    category: ["software"],
+    resources: [
+      {
+        label: "Kalman Filter Final Report",
+        url: "/projects/Kalman/Kalman_Final.pdf",
+        type: "report"
+      }
+    ]
+  },
 
   {
     slug: "Bent_Pipe",
