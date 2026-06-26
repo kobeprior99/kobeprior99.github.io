@@ -27,17 +27,17 @@ export const projects: Project[] = [
     resources: [
         {
           label: "Target Illumination by Structured Beam for Advanced Radar Scattering Analysis",
-          url: "presentations/Kobe_MURF_Presentation-V6.pdf",
+          url: "/projects/presentations/Kobe_MURF_Presentation-V6.pdf",
           type: "presentation"
         },
         {
           label: "16-Element Phased Array for Coarse AoA Estimation",
-          url: "presentations/Prior_16_Port_Phasing Network.pdf",
+          url: "/projects/presentations/Prior_16_Port_Phasing Network.pdf",
           type: "presentation"
         },
         {
           label: "Low-cost Software-controlled Phase Shifting Network for Generating Spatiotemporally Variable Waveforms",
-          url: "presentations/NRSM_Prior_Rev3.pdf",
+          url: "/projects/presentations/NRSM_Prior_Rev3.pdf",
           type: "presentation"
         },
       ]
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     resources: [
     {
       label: "Hardware and Software Development of Antenna Demonstration Module",
-      url: "presentations/AntennaDemonstrationPoster.pdf",
+      url: "/projects/presentations/AntennaDemonstrationPoster.pdf",
       type: "presentation"
     }
     ]
