@@ -1,5 +1,5 @@
 ---
-const birthDate = new Date(2003, 10, 14); // Nov 14, 2003
+const birthDate = new Date(2003, 11, 14); // Nov 14, 2003
 const totalYears = 90;
 const weeksPerYear = 52;
 const totalWeeks = totalYears * weeksPerYear;
@@ -10,7 +10,7 @@ const weeksLived = Math.floor((now.getTime() - birthDate.getTime()) / msPerWeek)
 <section id="weeks-grid">
   <h2 class="section-header">My Life in Weeks</h2>
   <p class="weeks-subtitle">
-    {weeksLived.toLocaleString()} weeks lived out of {totalWeeks.toLocaleString()} ({totalYears} years (hopefully))
+    {weeksLived.toLocaleString()} weeks lived out of {totalWeeks.toLocaleString()} ({totalYears} years)
   </p>
   <div class="grid-container">
     {Array.from({ length: totalWeeks }).map((_, i) => (
