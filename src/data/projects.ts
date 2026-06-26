@@ -137,8 +137,8 @@ export const projects: Project[] = [
   {
     slug: "kalman_filter",
     title: "Kalman Filter Implementation",
-    description: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were in  MATLAB and Simulink.",
-    fullDescription: "Full detailed writeup for the Kalman filter project goes here.",
+    description: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were implemented in  MATLAB and Simulink.",
+    fullDescription: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were implemented in  MATLAB and Simulink.",
     images: ["/projects/Kalman/kalman_cover.png","/projects/Kalman/Kalman_Filter.png"],
     tags: ["MATLAB", "Kalman Filter", "State Estimation"],
     category: ["software"],
@@ -155,10 +155,32 @@ export const projects: Project[] = [
     slug: "Bent_Pipe",
     title: "Bent Pipe Communication System",
     description: "During my summer internship at Rincon Research Coorporation, I worked on a project with 4 other interns to simulate, and implement a small scale demonstration of a bent pipe communicaiton system. My specific tasks involved creating a simulation of the system using a Python web-based graphical user interface and CesiumJS. The simulation involved scraping publicly available information of recent low Earth orbit (LEO) satellite launches and propagrating TLE data for a dynamic visualization of ideal link opportunities between two ground stations and the LEO satellites. The Doppler shift, noise floor, and path loss were calculated for each link opportunity to inform a channel model and a random phase rotation was applied. Signal allignment and demodulation was performed to extract a message from the received signal. ",
-    fullDescription: `Full detailed writeup for the bent pipe communication system project goes here.`,
+    fullDescription: "During my summer internship at Rincon Research Coorporation, I worked on a project with 4 other interns to simulate, and implement a small scale demonstration of a bent pipe communicaiton system. My specific tasks involved creating a simulation of the system using a Python web-based graphical user interface and CesiumJS. The simulation involved scraping publicly available information of recent low Earth orbit (LEO) satellite launches and propagrating TLE data for a dynamic visualization of ideal link opportunities between two ground stations and the LEO satellites. The Doppler shift, noise floor, and path loss were calculated for each link opportunity to inform a channel model and a random phase rotation was applied. Signal allignment and demodulation was performed to extract a message from the received signal.",
     images: ["/projects/Bent_Pipe/Bent_Pipe.png"],
-    tags: ["Software Defined Radio", "Communication Systems", "RF Amplification"],
-    category: ["software", "hardware"]
+    tags: ["Software Defined Radio", "Communication Systems", "Digital Communication", "Python", "CesiumJS"],
+    category: ["software", "hardware"],
+    resources: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/kpriorRincon/InternProj2025",
+        type: "code"
+      },
+      {
+        label: "Bent Pipe Communication System Presentation",
+        url: "https://www.linkedin.com/in/kobeprior/overlay/Position/2650361938/treasury/?profileId=ACoAADF3jSwBYvQMZfxcLtG_3AwMNK0esRQeXgA",
+        type: "presentation"
+      },
+      {
+        label: "Small Scale Demonstration of a Bent Pipe Communication System",
+        url: "https://youtu.be/UdC6h35kaHA",
+        type: "presentation"
+      },
+      {
+        label: "GUI Walkthrough",
+        url: "https://youtu.be/UdC6h35kaHA",
+        type: "presentation"
+      }
+    ]
 
   },
 
