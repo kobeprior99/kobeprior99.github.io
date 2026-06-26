@@ -97,7 +97,14 @@ export const projects: Project[] = [
     fullDescription: `Full detailed writeup for the patch antenna project goes here.`,
     images: ["/projects/xband_antenna/X-band.jpg"],
     tags: ["Antenna", "HFSS"],
-    category: ["hardware"]
+    category: ["hardware"], 
+    resources: [
+      {
+        label: "Simulated Vs Measured Results",
+        url: "/projects/xband_antenna/Results.pdf",
+        type: "presentation"
+      }
+    ]
   },
 
   {
