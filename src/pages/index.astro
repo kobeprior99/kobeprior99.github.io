@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/Timeline.astro";
 import WeeksGrid from "../components/WeeksGrid.astro";
+import { Image } from "astro:assets";
+import headshot from "../assets/Headshot.jpg";
+import hknLogo from "../assets/hkn-logo.svg";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -11,13 +14,20 @@ import WeeksGrid from "../components/WeeksGrid.astro";
   <section id="about">
     <div class="about-grid">
       <div class="about-image">
-        <img src="/Headshot.jpg" alt="Kobe Prior" />
+        <Image
+          src={headshot}
+          alt="Kobe Prior"
+          width={500}
+          loading="eager"
+          quality={100}
+          style="height: auto;"
+        />
       </div>
       <div class="about-bio">
         <div class="bio-name-row">
           <h1>Kobe Prior</h1>
           <img
-            src="/hkn-logo.png"
+            src="/hkn-logo.svg"
             alt="IEEE Eta Kappa Nu"
             width="36"
             height="36"
@@ -68,6 +78,6 @@ import WeeksGrid from "../components/WeeksGrid.astro";
       </div>
     </div>
   </section>
-  <WeeksGrid/>
+  <WeeksGrid />
   <Timeline />
 </Layout>
