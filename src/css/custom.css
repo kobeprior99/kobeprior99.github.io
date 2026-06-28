@@ -603,10 +603,6 @@ html:not(.dark) #theme-toggle {
     filter: grayscale(1) brightness(0);
 }
 
-html.dark .hkn-badge {
-    filter: invert(1);
-}
-
 html.dark nav a.active-link {
     background: rgba(30, 80, 140, 0.6);
     border-color: rgba(100, 180, 255, 0.4);
@@ -622,6 +618,9 @@ html.dark .read-more:hover {
     background: rgba(30, 80, 140, 0.6);
 }
 
+.hkn-badge-dark  { display: none; }
+html.dark .hkn-badge-light { display: none; }
+html.dark .hkn-badge-dark  { display: block; }
 
 /* ============================================================
    RESPONSIVE — TABLET & MOBILE
@@ -663,6 +662,13 @@ html.dark .read-more:hover {
         margin: 0 auto;
         display: block;
     }
+    .hkn-badge-light,
+        .hkn-badge-dark {
+            display: none;
+        }
+
+        html:not(.dark) .hkn-badge-light { display: block; }
+        html.dark        .hkn-badge-dark  { display: block; }
 }
 
 @media (max-width: 480px) {
