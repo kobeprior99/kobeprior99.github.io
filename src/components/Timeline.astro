@@ -256,16 +256,18 @@ const items = [
 <script>
     const items = document.querySelectorAll(".tl-item");
     const obs = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((e) => {
-                if (e.isIntersecting) {
-                    e.target.classList.add("visible");
-                } else {
-                    e.target.classList.remove("visible");
-                }
-            });
-        },
-        { threshold: 0.15 },
+    (entries) => {
+        entries.forEach((e) => {
+        if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            const index = Array.from(items).indexOf(e.target as HTMLElement);
+            window.dispatchEvent(new CustomEvent('timeline-item', { detail: { index } }));
+        } else {
+            e.target.classList.remove("visible");
+        }
+        });
+    },
+    { threshold: 0.15 },
     );
     items.forEach((el) => obs.observe(el));
 

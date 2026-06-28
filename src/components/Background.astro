@@ -1,126 +1,107 @@
 ---
 // Background.astro
-// Drop into your Layout.astro behind your page content
 ---
-<canvas id="caf-bg"></canvas>
+<canvas id="sine-bg"></canvas>
 
 <style>
-  #caf-bg {
+  #sine-bg {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.18;
+    opacity: 1;
     pointer-events: none;
     z-index: 0;
+  }
+  html:not(.dark) #sine-bg {
+    opacity: 1;
   }
 </style>
 
 <script>
-  const canvas = document.getElementById('caf-bg') as HTMLCanvasElement;
+  const canvas = document.getElementById('sine-bg') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d')!;
-
-  const N_DELAY = 80;
-  const DOPPLER_OFFSETS = [-3, -2, -1, 0, 1, 2, 3];
-  const N_DOPPLER = DOPPLER_OFFSETS.length;
-
-  function sinc(x: number) {
-    if (Math.abs(x) < 1e-9) return 1;
-    return Math.sin(Math.PI * x) / (Math.PI * x);
-  }
-
-  function bpskCaf(dopplerNorm: number): number[] {
-    const surface: number[] = [];
-    for (let d = 0; d < N_DELAY; d++) {
-      const tau = (d - N_DELAY / 2) / 8;
-      const val = Math.abs(
-        sinc(tau - dopplerNorm * 0.3) *
-        Math.exp(-0.18 * tau * tau) *
-        Math.cos(Math.PI * dopplerNorm * tau * 0.5)
-      );
-      surface.push(val);
-    }
-    const mx = Math.max(...surface);
-    return surface.map(v => v / (mx || 1));
-  }
-
-  const slices = DOPPLER_OFFSETS.map(fd => bpskCaf(fd));
+  let W = 0, H = 0;
 
   function resize() {
-    canvas.width = window.innerWidth * devicePixelRatio;
-    canvas.height = window.innerHeight * devicePixelRatio;
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * devicePixelRatio;
+    canvas.height = H * devicePixelRatio;
     ctx.scale(devicePixelRatio, devicePixelRatio);
   }
   resize();
   window.addEventListener('resize', resize);
 
-  function isoProject(
-    x: number, y: number, z: number,
-    cx: number, cy: number,
-    tileW: number, tileH: number,
-    sliceSpacing: number
-  ): [number, number] {
-    const ix = cx + (x - y) * (tileW / 2);
-    const iy = cy + (x + y) * (tileH / 2) - z * sliceSpacing * 1.8;
-    return [ix, iy];
-  }
+const waves = [
+    { freq: 0.008, amp:  76, speed: 0.18, phase: 0.0, boost: 1, opacity: 0.32, width: 1.2 },
+    { freq: 0.013, amp:  44, speed: 0.28, phase: 2.1, boost: 1, opacity: 0.26, width: 0.8 },
+    { freq: 0.021, amp:  24, speed: 0.42, phase: 4.2, boost: 1, opacity: 0.22, width: 1.6 },
+    { freq: 0.005, amp: 110, speed: 0.10, phase: 4.4, boost: 1, opacity: 0.20, width: 0.6 },
+    { freq: 0.020, amp:  28, speed: 0.42, phase: 1.3, boost: 1, opacity: 0.18, width: 0.5 },
+    { freq: 0.031, amp:  16, speed: 0.60, phase: 3.7, boost: 1, opacity: 0.18, width: 2.0 },
+    { freq: 0.004, amp: 140, speed: 0.07, phase: 0.8, boost: 1, opacity: 0.22, width: 0.7 },
+    { freq: 0.017, amp:  36, speed: 0.35, phase: 5.1, boost: 1, opacity: 0.22, width: 0.9 },
+    { freq: 0.025, amp:  60, speed: 0.22, phase: 1.8, boost: 1, opacity: 0.16, width: 0.4 },
+    { freq: 0.040, amp:  12, speed: 0.75, phase: 0.4, boost: 1, opacity: 0.16, width: 2.4 },
+    { freq: 0.003, amp: 180, speed: 0.05, phase: 3.2, boost: 1, opacity: 0.22, width: 1.0 },
+    { freq: 0.005, amp: 180, speed: 0.30, phase: 2.5, boost: 1, opacity: 0.18, width: 0.7 },
+];
 
-  let angle = 0.38;
+  window.addEventListener('timeline-item', (e: Event) => {
+    const { index } = (e as CustomEvent).detail;
+    waves[index % waves.length].boost = 3.5;
+  });
+
+  let scrollY = 0;
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+  let t = 0;
 
   function draw() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    ctx.clearRect(0, 0, w, h);
+    ctx.clearRect(0, 0, W, H);
 
-    const tileW = Math.min(w * 0.022, 16);
-    const tileH = tileW * 0.5;
-    const sliceSpacing = Math.min(h * 0.1, 64);
-    const cx = w * 0.5 + Math.cos(angle) * w * 0.04;
-    const cy = h * 0.95;  // was 0.72
+    const isDark = document.documentElement.classList.contains('dark');
+    const baseR = isDark ? 100 : 15;
+    const baseG = isDark ? 160 : 60;
+    const baseB = isDark ? 220 : 140;
 
+    const scrollInfluence = scrollY * 0.004;
 
-    for (let s = 0; s < N_DOPPLER; s++) {
-      const slice = slices[s];
-      for (let d = 0; d < N_DELAY - 1; d++) {
-        const v0 = slice[d];
-        const v1 = slice[d + 1];
-        const x0 = d - N_DELAY / 2;
-        const x1 = d + 1 - N_DELAY / 2;
+    waves.forEach((wave) => {
+      const boost = wave.boost;
+      const t2 = Math.min((boost - 1) / 2.5, 1);
 
-        const [px0, py0] = isoProject(x0, s * 3.2, v0, cx, cy, tileW, tileH, sliceSpacing);
-        const [px1, py1] = isoProject(x1, s * 3.2, v1, cx, cy, tileW, tileH, sliceSpacing);
-        const [px0b, py0b] = isoProject(x0, s * 3.2, 0, cx, cy, tileW, tileH, sliceSpacing);
-        const [px1b, py1b] = isoProject(x1, s * 3.2, 0, cx, cy, tileW, tileH, sliceSpacing);
+      const wr = Math.round(baseR + (100 - baseR) * t2);
+      const wg = Math.round(baseG + (160 - baseG) * t2);
+      const wb = Math.round(baseB + (220 - baseB) * t2);
 
-        const isDark = document.documentElement.classList.contains('dark');
-        const brightness = isDark
-        ? Math.round(160 + v0 * 95)
-        : Math.round(20 + v0 * 60);
-        const alpha = isDark
-        ? 0.06 + v0 * 0.13
-        : 0.08 + v0 * 0.18;
+      const boostedAmp = wave.amp * boost;
+      const boostedOpacity = wave.opacity * Math.min(boost, 2.5);
 
-        ctx.beginPath();
-        ctx.moveTo(px0, py0);
-        ctx.lineTo(px1, py1);
-        ctx.lineTo(px1b, py1b);
-        ctx.lineTo(px0b, py0b);
-        ctx.closePath();
-        ctx.fillStyle = `rgba(${brightness},${Math.round(brightness * 0.85 + 20)},255,${0.06 + v0 * 0.13})`;
-        ctx.fill();
-
-        if (v0 > 0.15 || v1 > 0.15) {
-          ctx.beginPath();
-          ctx.moveTo(px0, py0);
-          ctx.lineTo(px1, py1);
-          ctx.strokeStyle = `rgba(180,215,255,${0.03 + Math.max(v0, v1) * 0.1})`;
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
-        }
+      const yBase = H * 0.5;
+      ctx.beginPath();
+      for (let x = 0; x <= W; x += 2) {
+        const y = yBase
+          + Math.sin(x * wave.freq + wave.phase + t * wave.speed + scrollInfluence) * boostedAmp
+          + Math.sin(x * wave.freq * 0.5 + scrollInfluence * 0.7) * boostedAmp * 0.3;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
-    }
 
-    angle += 0.0015;
+      if (boost > 1.1) {
+        ctx.strokeStyle = `rgba(100,160,220,${(boost - 1) * 0.06})`;
+        ctx.lineWidth = wave.width * 6;
+        ctx.stroke();
+      }
+
+      ctx.strokeStyle = `rgba(${wr},${wg},${wb},${boostedOpacity})`;
+      ctx.lineWidth = wave.width * (boost > 1 ? 1.5 : 1);
+      ctx.stroke();
+
+      if (wave.boost > 1) wave.boost = Math.max(1, wave.boost - 0.018);
+    });
+
+    t += 0.016;
     requestAnimationFrame(draw);
   }
 

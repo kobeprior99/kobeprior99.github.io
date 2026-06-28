@@ -221,6 +221,8 @@ footer {
    ABOUT PAGE
    ============================================================ */
 .about-grid {
+    position: relative;
+    z-index:1;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 48px;
