@@ -1,0 +1,128 @@
+---
+// Background.astro
+// Drop into your Layout.astro behind your page content
+---
+<canvas id="caf-bg"></canvas>
+
+<style>
+  #caf-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('caf-bg') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+
+  const N_DELAY = 80;
+  const DOPPLER_OFFSETS = [-3, -2, -1, 0, 1, 2, 3];
+  const N_DOPPLER = DOPPLER_OFFSETS.length;
+
+  function sinc(x: number) {
+    if (Math.abs(x) < 1e-9) return 1;
+    return Math.sin(Math.PI * x) / (Math.PI * x);
+  }
+
+  function bpskCaf(dopplerNorm: number): number[] {
+    const surface: number[] = [];
+    for (let d = 0; d < N_DELAY; d++) {
+      const tau = (d - N_DELAY / 2) / 8;
+      const val = Math.abs(
+        sinc(tau - dopplerNorm * 0.3) *
+        Math.exp(-0.18 * tau * tau) *
+        Math.cos(Math.PI * dopplerNorm * tau * 0.5)
+      );
+      surface.push(val);
+    }
+    const mx = Math.max(...surface);
+    return surface.map(v => v / (mx || 1));
+  }
+
+  const slices = DOPPLER_OFFSETS.map(fd => bpskCaf(fd));
+
+  function resize() {
+    canvas.width = window.innerWidth * devicePixelRatio;
+    canvas.height = window.innerHeight * devicePixelRatio;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function isoProject(
+    x: number, y: number, z: number,
+    cx: number, cy: number,
+    tileW: number, tileH: number,
+    sliceSpacing: number
+  ): [number, number] {
+    const ix = cx + (x - y) * (tileW / 2);
+    const iy = cy + (x + y) * (tileH / 2) - z * sliceSpacing * 1.8;
+    return [ix, iy];
+  }
+
+  let angle = 0.38;
+
+  function draw() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    const tileW = Math.min(w * 0.022, 16);
+    const tileH = tileW * 0.5;
+    const sliceSpacing = Math.min(h * 0.1, 64);
+    const cx = w * 0.5 + Math.cos(angle) * w * 0.04;
+    const cy = h * 0.95;  // was 0.72
+
+
+    for (let s = 0; s < N_DOPPLER; s++) {
+      const slice = slices[s];
+      for (let d = 0; d < N_DELAY - 1; d++) {
+        const v0 = slice[d];
+        const v1 = slice[d + 1];
+        const x0 = d - N_DELAY / 2;
+        const x1 = d + 1 - N_DELAY / 2;
+
+        const [px0, py0] = isoProject(x0, s * 3.2, v0, cx, cy, tileW, tileH, sliceSpacing);
+        const [px1, py1] = isoProject(x1, s * 3.2, v1, cx, cy, tileW, tileH, sliceSpacing);
+        const [px0b, py0b] = isoProject(x0, s * 3.2, 0, cx, cy, tileW, tileH, sliceSpacing);
+        const [px1b, py1b] = isoProject(x1, s * 3.2, 0, cx, cy, tileW, tileH, sliceSpacing);
+
+        const isDark = document.documentElement.classList.contains('dark');
+        const brightness = isDark
+        ? Math.round(160 + v0 * 95)
+        : Math.round(20 + v0 * 60);
+        const alpha = isDark
+        ? 0.06 + v0 * 0.13
+        : 0.08 + v0 * 0.18;
+
+        ctx.beginPath();
+        ctx.moveTo(px0, py0);
+        ctx.lineTo(px1, py1);
+        ctx.lineTo(px1b, py1b);
+        ctx.lineTo(px0b, py0b);
+        ctx.closePath();
+        ctx.fillStyle = `rgba(${brightness},${Math.round(brightness * 0.85 + 20)},255,${0.06 + v0 * 0.13})`;
+        ctx.fill();
+
+        if (v0 > 0.15 || v1 > 0.15) {
+          ctx.beginPath();
+          ctx.moveTo(px0, py0);
+          ctx.lineTo(px1, py1);
+          ctx.strokeStyle = `rgba(180,215,255,${0.03 + Math.max(v0, v1) * 0.1})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    angle += 0.0015;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
