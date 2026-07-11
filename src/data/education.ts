@@ -39,7 +39,7 @@ export const degrees: Degree[] = [
     dates: "2025 – Present",
     imageLight: "/education/Mines-center.png",
     imageDark: "/education/Mines-center-white.png",
-    details: ["Thesis Track", "IEEE HKN Honor Society", "GPA: 4.0/4.0"],
+    details: ["Thesis Track with emphasis on Antennas and Wireless Communications", "IEEE HKN Honor Society", "GPA: 4.0/4.0"],
   },
   {
     degree: "B.S. Electrical Engineering",
@@ -47,7 +47,7 @@ export const degrees: Degree[] = [
     dates: "2022 – 2026",
     imageLight: "/education/Mines-center.png",
     imageDark: "/education/Mines-center-white.png",
-    details: ["Outstanding Graduating Senior", "Dean's List (all semesters)", "GPA: 4.0/4.0"],
+    details: ["Outstanding Graduating Senior", "Dean's List (6x)", "GPA: 4.0/4.0"],
   },
   {
     degree: "Honors High School Diploma",
@@ -60,14 +60,25 @@ export const degrees: Degree[] = [
 
 export const fellowships: Award[] = [
   // { name: "...", org: "...", year: "...", image: "/images/education/awards/..." },
+  { name: "Mines Undergraduate Research Fellowship (MURF)", org: "Colorado School of Mines", year: "2025-2026" },
+  { name: "First-Year Innovationa and Research Scholar Training (FIRST)", org: "Colorado School of Mines", year: "2022-2023" },
 ];
 
 export const scholarships: Award[] = [
   // { name: "...", org: "...", year: "...", image: "/images/education/awards/..." },
+  { name: "Colorado Scholar Fund", org: "State of Colorado", year: "2022 - 2026" },
+  { name: "VICEROY Scholarship", org: "AFRL, USWR&E and Griffis Institute", year: "2024 - 2026" },
+  { name: "Bashen, George & Betty Scholarship", org: "Colorado School of Mines", year: "2024 - 2026" },
+  { name: "Schoonover Current Use Scholarship", org: "Colorado School of Mines", year: "2024 - 2026" },
+  { name: "Steve Westhoff Scholarship", org: "SGM", year: "2022 - 2023" },
+  { name: "Ray Barron Strength & Honor Fund Scholarship", org: "RBS&HF", year: "2022" },
+  { name: "Durango Elk's Lodge Scholarship", org: "Durango Elk's Lodge", year: "2022" },
 ];
 
 export const academicAwards: Award[] = [
-  // { name: "...", org: "...", year: "...", image: "/images/education/awards/..." },
+  { name: "Outstanding Graduating Senior", org: "Colorado School of Mines", year: "2026" },
+  { name: "Capstone Design Overall Top Honors Second Place", org: "Colorado School of Mines", year: "2026" },
+  { name: "Dean's List (6x)", org: "Colorado School of Mines", year: "2022 - 2026" },
 ];
 
 export const publications: Publication[] = [
@@ -90,5 +101,10 @@ export const publications: Publication[] = [
 ];
 
 export const certifications: Certification[] = [
-  // { name: "...", issuer: "...", date: "...", image: "...", link: "..." },
+  { name: "Altium Global Scholarship Program", issuer: "Altium Designer", date: "2026",  link: "https://ti-user-certificates.s3.amazonaws.com/8d271d4d-1d22-4519-8219-3870666aff3b/d9382a3d-43e8-4fa1-97b6-374657da36be-kobe-prior-414977bd-95d3-455c-b2eb-daa8f24af4d1-certificate.pdf" },
+  { name: "Altium Workspace User Management", issuer: "Altium Designer", date: "2026",  link: "https://ti-user-certificates.s3.amazonaws.com/8d271d4d-1d22-4519-8219-3870666aff3b/d9382a3d-43e8-4fa1-97b6-374657da36be-kobe-prior-08d96784-12d3-4978-a253-cf8cec3e4164-certificate.pdf" },
+  { name: "Altium Designer Essentials - On Demand (English)", issuer: "Altium Designer", date: "2026",  link: "https://ti-user-certificates.s3.amazonaws.com/8d271d4d-1d22-4519-8219-3870666aff3b/d9382a3d-43e8-4fa1-97b6-374657da36be-kobe-prior-43c7881b-78c2-41ec-9bb2-c7797efdbf82-certificate.pdf" },
+  { name: "Signal Processing with MATLAB", issuer: "MathWorks", date: "2024",  link: "https://matlabacademy.mathworks.com/progress/share/certificate.html?id=c9dcaf24-0e7d-4d72-814e-ca713577c0e3&" },
+  { name: "Responsible Conduct of Research", issuer: "CITI Program", date: "2022",  link: "https://www.citiprogram.org/verify/?we61dfbbd-8472-4bfe-bc74-2e374e58688e-52459970" },
+  { name: "Legacy Responsive Web Design V8", issuer: "freeCodeCamp", date: "2020",  link: "https://www.freecodecamp.org/certification/kobe_prior/responsive-web-design" },
 ];
