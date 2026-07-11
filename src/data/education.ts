@@ -39,7 +39,7 @@ export const degrees: Degree[] = [
     dates: "2025 – Present",
     imageLight: "/education/Mines-center.png",
     imageDark: "/education/Mines-center-white.png",
-    details: ["Thesis Track with emphasis on Antennas and Wireless Communications", "IEEE HKN Honor Society", "GPA: 4.0/4.0"],
+    details: ["GPA: 4.0/4.0"],
   },
   {
     degree: "B.S. Electrical Engineering",
@@ -47,14 +47,14 @@ export const degrees: Degree[] = [
     dates: "2022 – 2026",
     imageLight: "/education/Mines-center.png",
     imageDark: "/education/Mines-center-white.png",
-    details: ["Outstanding Graduating Senior", "Dean's List (6x)", "GPA: 4.0/4.0"],
+    details: ["GPA: 4.0/4.0"],
   },
   {
     degree: "Honors High School Diploma",
     institution: "Bayfield High School",
     dates: "2018 – 2022",
     imageLight: "/education/BHS.png",
-    details: ["Valedictorian", "AP Scholar with Distinction", "Unweighted GPA: 4.0/4.0"],
+    details: ["Unweighted GPA: 4.0/4.0"],
   },
 ];
 
