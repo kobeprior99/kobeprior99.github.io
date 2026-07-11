@@ -622,6 +622,9 @@ html.dark .read-more:hover {
 html.dark .hkn-badge-light { display: none; }
 html.dark .hkn-badge-dark  { display: block; }
 
+.crest-dark { display: none; }
+html.dark .crest-light { display: none; }
+html.dark .crest-dark { display: block; }
 /* ============================================================
    RESPONSIVE — TABLET & MOBILE
    ============================================================ */

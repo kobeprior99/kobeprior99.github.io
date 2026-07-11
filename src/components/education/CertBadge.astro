@@ -1,0 +1,55 @@
+---
+interface Props {
+  name: string;
+  issuer: string;
+  date: string;
+  image?: string;
+  link?: string;
+}
+const { name, issuer, date, image, link } = Astro.props;
+const Tag = link ? "a" : "div";
+---
+<Tag class="cert-badge" {...(link ? { href: link, target: "_blank", rel: "noopener" } : {})}>
+  {image && <img src={image} alt={`${name} badge`} loading="lazy" />}
+  <div class="cert-text">
+    <span class="cert-name">{name}</span>
+    <span class="cert-meta">{issuer} · {date}</span>
+  </div>
+</Tag>
+
+<style>
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    background: var(--glass-bg, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  a.cert-badge:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+  }
+  .cert-badge img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .cert-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .cert-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .cert-meta {
+    font-size: 0.8rem;
+    opacity: 0.65;
+  }
+</style>
