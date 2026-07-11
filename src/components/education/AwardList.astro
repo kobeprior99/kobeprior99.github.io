@@ -1,0 +1,72 @@
+---
+interface Award {
+  name: string;
+  org?: string;
+  year?: string;
+  image?: string;
+}
+interface Props {
+  title: string;
+  items: Award[];
+}
+const { title, items } = Astro.props;
+---
+<div class="award-category">
+  <h4>{title}</h4>
+  <ul>
+    {items.map((item) => (
+      <li>
+        {item.image && <img src={item.image} alt="" loading="lazy" />}
+        <div class="award-text">
+          <span class="award-name">{item.name}</span>
+          {(item.org || item.year) && (
+            <span class="award-meta">
+              {item.org}{item.org && item.year ? " · " : ""}{item.year}
+            </span>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .award-category h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .award-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .award-category li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .award-category img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .award-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .award-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .award-meta {
+    font-size: 0.8rem;
+    opacity: 0.65;
+  }
+</style>

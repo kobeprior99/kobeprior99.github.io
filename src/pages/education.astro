@@ -1,0 +1,445 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+  degrees,
+  fellowships,
+  scholarships,
+  academicAwards,
+  publications,
+  certifications,
+} from "../data/education.ts";
+
+const awardGroups = [
+  { title: "Fellowships", items: fellowships },
+  { title: "Scholarships", items: scholarships },
+  { title: "Academic Awards", items: academicAwards },
+].filter((group) => group.items.length > 0);
+---
+
+<Layout title="Education Page">
+  <section id="Education">
+    <div class="education-container">
+      <h2 class="education-title">Education</h2>
+
+      <div class="degrees-grid">
+        {
+          degrees.map((d) => (
+            <div class="edu-card degree-card">
+              {(d.imageLight || d.imageDark) && (
+                <div class="degree-image">
+                  {d.imageLight && (
+                    <img
+                      class="crest-light"
+                      src={d.imageLight}
+                      alt={`${d.institution} crest`}
+                      loading="lazy"
+                    />
+                  )}
+                  {(d.imageDark || d.imageLight) && (
+                    <img
+                      class="crest-dark"
+                      src={d.imageDark ?? d.imageLight}
+                      alt={`${d.institution} crest`}
+                      loading="lazy"
+                    />
+                  )}
+                </div>
+              )}
+              <div class="degree-body">
+                <span class="degree-dates">{d.dates}</span>
+                <h3>{d.degree}</h3>
+                <p class="degree-institution">{d.institution}</p>
+                {d.gpa && <p class="degree-gpa">GPA: {d.gpa}</p>}
+                {d.details && d.details.length > 0 && (
+                  <div class="project-tags">
+                    {d.details.map((detail) => (
+                      <span class="tag">{detail}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        awardGroups.length > 0 && (
+          <>
+            <h3 class="section-title">Honors & Awards</h3>
+            <div class="awards-grid">
+              {awardGroups.map((group) => (
+                <div class="edu-card award-group">
+                  <h4>{group.title}</h4>
+                  <ul>
+                    {group.items.map((item) => (
+                      <li>
+                        {item.image && (
+                          <img src={item.image} alt="" loading="lazy" />
+                        )}
+                        <div class="award-text">
+                          <span class="award-name">{item.name}</span>
+                          {(item.org || item.year) && (
+                            <span class="award-meta">
+                              {item.org}
+                              {item.org && item.year ? " · " : ""}
+                              {item.year}
+                            </span>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </>
+        )
+      }
+
+      <h3 class="section-title">Publications</h3>
+      <div class="publications-list">
+        {
+          publications.map((p) => {
+            const Tag = p.link ? "a" : "div";
+            return (
+              <Tag
+                class="edu-card pub-card"
+                {...(p.link
+                  ? { href: p.link, target: "_blank", rel: "noopener" }
+                  : {})}
+              >
+                {p.image && (
+                  <div class="pub-image">
+                    <img
+                      src={p.image}
+                      alt={`${p.title} thumbnail`}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div class="pub-body">
+                  <h4>{p.title}</h4>
+                  <p class="pub-authors">{p.authors}</p>
+                  <p class="pub-venue">
+                    {p.venue} · {p.year}
+                  </p>
+                </div>
+                {p.link && <span class="pub-arrow">↗</span>}
+              </Tag>
+            );
+          })
+        }
+        {
+          publications.length === 0 && (
+            <p class="empty-note">Publications coming soon.</p>
+          )
+        }
+      </div>
+
+      <h3 class="section-title">Certifications</h3>
+      <div class="certs-grid">
+        {
+          certifications.map((c) => {
+            const Tag = c.link ? "a" : "div";
+            return (
+              <Tag
+                class="edu-card cert-badge"
+                {...(c.link
+                  ? { href: c.link, target: "_blank", rel: "noopener" }
+                  : {})}
+              >
+                {c.image && (
+                  <img src={c.image} alt={`${c.name} badge`} loading="lazy" />
+                )}
+                <div class="cert-text">
+                  <span class="cert-name">{c.name}</span>
+                  <span class="cert-meta">
+                    {c.issuer} · {c.date}
+                  </span>
+                </div>
+              </Tag>
+            );
+          })
+        }
+        {
+          certifications.length === 0 && (
+            <p class="empty-note">Certifications coming soon.</p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const cards = document.querySelectorAll<HTMLElement>(".edu-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { root: null, rootMargin: "0px 0px -50px 0px", threshold: 0.1 },
+    );
+    cards.forEach((card) => observer.observe(card));
+  </script>
+</Layout>
+
+<style>
+  .education-container {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 40px;
+  }
+
+  .education-title {
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin: 56px 0 20px;
+  }
+
+  /* shared card look, matches .project-card */
+  .edu-card {
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px var(--shadow);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s,
+      opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+      transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+  }
+  .edu-card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .edu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px var(--shadow);
+  }
+  .edu-card.reveal:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Degrees */
+  .degrees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+  }
+  .degree-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+  }
+  .degree-image {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--blue-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .degree-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .degree-dates {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .degree-body h3 {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin: 0.2rem 0 0.1rem;
+  }
+  .degree-institution {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .degree-gpa {
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* reuse .tag / .project-tags from custom.css for degree details */
+
+  /* Honors & Awards */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+  }
+  .award-group {
+    padding: 24px;
+  }
+  .award-group h4 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .award-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .award-group li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .award-group img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .award-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .award-name {
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .award-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* Publications */
+  .publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pub-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+  }
+  a.pub-card:hover {
+    transform: translateY(-4px);
+  }
+  .pub-image {
+    flex-shrink: 0;
+    width: 64px;
+    height: 84px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--blue-tint);
+  }
+  .pub-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pub-body h4 {
+    font-size: 1rem;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+  .pub-authors {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .pub-venue {
+    margin: 3px 0 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .pub-arrow {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  /* Certifications */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+  }
+  a.cert-badge:hover {
+    transform: translateY(-4px);
+  }
+  .cert-badge img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .cert-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .cert-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .cert-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .empty-note {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .education-container {
+      padding: 0 20px;
+      margin: 40px auto;
+    }
+    .degrees-grid,
+    .awards-grid,
+    .certs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
