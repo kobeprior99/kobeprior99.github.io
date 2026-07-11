@@ -39,7 +39,7 @@ export const degrees: Degree[] = [
     dates: "2025 – Present",
     imageLight: "/education/Mines-center.png",
     imageDark: "/education/Mines-center-white.png",
-    details: ["GPA: 4.0/4.0"],
+    details: ["Antennas and Wireless Communications", "GPA: 4.0/4.0"],
   },
   {
     degree: "B.S. Electrical Engineering",
