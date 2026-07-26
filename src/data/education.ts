@@ -1,4 +1,4 @@
-export interface Degree {
+eport interface Degree {
   degree: string;
   institution: string;
   dates: string;
