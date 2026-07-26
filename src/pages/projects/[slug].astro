@@ -1,7 +1,9 @@
 ---
 import "../../css/custom.css";
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import { projects } from "../../data/projects.ts";
+import { resolveProjectImage } from "../../utils/images.ts";
 export function getStaticPaths() {
   return projects.map((project) => ({
     params: { slug: project.slug },
@@ -20,13 +22,13 @@ const { project } = Astro.props;
           {
             project.images.map((img, i) => (
               <div class="carousel-slide">
-                <img
-                  src={img}
+                <Image
+                  src={resolveProjectImage(img)}
                   alt={`${project.title} image ${i + 1}`}
                   class="carousel-img"
                   data-index={i}
-                  width="800"
-                  height="420"
+                  width={800}
+                  height={420}
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
                 />

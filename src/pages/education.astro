@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import {
   degrees,
@@ -8,6 +9,7 @@ import {
   publications,
   certifications,
 } from "../data/education.ts";
+import { resolveEducationImage } from "../utils/images.ts";
 
 const awardGroups = [
   { title: "Fellowships", items: fellowships },
@@ -28,18 +30,22 @@ const awardGroups = [
               {(d.imageLight || d.imageDark) && (
                 <div class="degree-image">
                   {d.imageLight && (
-                    <img
+                    <Image
                       class="crest-light"
-                      src={d.imageLight}
+                      src={resolveEducationImage(d.imageLight)}
                       alt={`${d.institution} crest`}
+                      width={112}
+                      height={112}
                       loading="lazy"
                     />
                   )}
                   {(d.imageDark || d.imageLight) && (
-                    <img
+                    <Image
                       class="crest-dark"
-                      src={d.imageDark ?? d.imageLight}
+                      src={resolveEducationImage(d.imageDark ?? d.imageLight!)}
                       alt={`${d.institution} crest`}
+                      width={112}
+                      height={112}
                       loading="lazy"
                     />
                   )}
@@ -75,7 +81,13 @@ const awardGroups = [
                     {group.items.map((item) => (
                       <li>
                         {item.image && (
-                          <img src={item.image} alt="" loading="lazy" />
+                          <Image
+                            src={resolveEducationImage(item.image)}
+                            alt=""
+                            width={56}
+                            height={56}
+                            loading="lazy"
+                          />
                         )}
                         <div class="award-text">
                           <span class="award-name">{item.name}</span>
@@ -111,9 +123,11 @@ const awardGroups = [
               >
                 {p.image && (
                   <div class="pub-image">
-                    <img
-                      src={p.image}
+                    <Image
+                      src={resolveEducationImage(p.image)}
                       alt={`${p.title} thumbnail`}
+                      width={128}
+                      height={168}
                       loading="lazy"
                     />
                   </div>
@@ -150,7 +164,13 @@ const awardGroups = [
                   : {})}
               >
                 {c.image && (
-                  <img src={c.image} alt={`${c.name} badge`} loading="lazy" />
+                  <Image
+                    src={resolveEducationImage(c.image)}
+                    alt={`${c.name} badge`}
+                    width={80}
+                    height={80}
+                    loading="lazy"
+                  />
                 )}
                 <div class="cert-text">
                   <span class="cert-name">{c.name}</span>
