@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects.ts";
+import { resolveProjectImage } from "../utils/images.ts";
 ---
 <Layout title="Projects Page">
   <section id="projects">
@@ -16,11 +18,11 @@ import { projects } from "../data/projects.ts";
           projects.map((project, i) => (
             <div class="project-card" data-category={project.category.join(" ")}>
               <div class="project-image">
-                <img
-                  src={project.images[0]}
+                <Image
+                  src={resolveProjectImage(project.images[0])}
                   alt={project.title}
-                  width="600"
-                  height="200"
+                  width={600}
+                  height={200}
                   loading={i < 3 ? "eager" : "lazy"}
                   decoding="async"
                 />
