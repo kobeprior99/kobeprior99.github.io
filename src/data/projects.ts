@@ -136,7 +136,7 @@ export const projects: Project[] = [
 
   {
     slug: "kalman_filter",
-    title: "Kalman Filter Implementation",
+    title: "Extended Kalman Filter Implementation",
     description: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were implemented in  MATLAB and Simulink.",
     fullDescription: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were implemented in  MATLAB and Simulink.",
     images: ["/projects/Kalman/kalman_cover.png","/projects/Kalman/Kalman_Filter.png"],
