@@ -13,6 +13,7 @@ export interface Project {
   tags: string[];
   category: ("hardware" | "software")[];
   resources ? : ProjectResources[];
+  model3d ? : string; // path to the web-friendly .glb, e.g. "/models/parray/board.glb"
 }
 
 export const projects: Project[] = [
@@ -40,7 +41,8 @@ export const projects: Project[] = [
           url: "/projects/parray/NRSM_Prior_Rev3.pdf",
           type: "report"
         },
-      ]
+      ],
+    model3d: "/models/Parray.glb",
   },
 
   {
@@ -77,7 +79,8 @@ export const projects: Project[] = [
         url: "/projects/smart_pick/Smart_Pick_Poster.pdf",
         type: "paper"
       },
-    ]
+    ],
+    model3d: "/models/Smart_Pick.glb",
   },
 
   {
@@ -136,7 +139,7 @@ export const projects: Project[] = [
 
   {
     slug: "kalman_filter",
-    title: "Extended Kalman Filter Implementation",
+    title: "Kalman Filter Implementation",
     description: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were implemented in  MATLAB and Simulink.",
     fullDescription: "To create accurate estimates of the internal states of a non-linear, two-wheeled robot driving on a perforated surface with deterministic inputs and noisy measurements from RF sensors, an extended Kalman filter and Monte Carlo Kalman filter were implemented in  MATLAB and Simulink.",
     images: ["/projects/Kalman/kalman_cover.png","/projects/Kalman/Kalman_Filter.png"],
