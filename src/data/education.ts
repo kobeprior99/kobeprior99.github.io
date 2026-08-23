@@ -96,7 +96,7 @@ export const publications: Publication[] = [
     venue: "USNC URSI National Radio Science Meeting",
     year: "2026",
     image: "/education/paper_2.png",
-    link: "https://usncursi.org/archive/nrsm/2026/papers/1014.pdf"
+    link: "https://ieeexplore.ieee.org/document/11550787"
   }
 ];
 
