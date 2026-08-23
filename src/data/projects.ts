@@ -111,6 +111,16 @@ export const projects: Project[] = [
   },
 
   {
+    slug: "hkn-coin",
+    title: "Eta Kappa Nu Marketing Coin",
+    description: "Designed a printed circuit board with ENIG (gold plating) to promote HKN honor society at Mines",
+    fullDescription: "Designed a custom promotional PCB coin for the HKN honor society at Mines using Altium Designer. Developed the top and bottom copper/solder mask layers to create the coin design and prepared the board for fabrication. The PCBs were manufactured through JLCPCB at low cost using an Electroless Nickel Immersion Gold (ENIG) surface finish, providing a durable, gold-plated appearance suitable for an HKN promotional item.",
+    images: ["/projects/hkn-coin/front.png","/projects/hkn-coin/back.png"],
+    tags: ["PCB Design", "PCB Art", "Promotional Coin"],
+    category: ["hardware"],
+    model3d: "/models/HKNcoin.glb",
+  },
+  {
     slug: "finance_dashboard",
     title: "Finance Dashboard",
     description: "A personal project using python, web-based graphical user interface to report data about my current finances using a google sheet api.",
