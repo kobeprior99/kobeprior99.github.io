@@ -49,10 +49,17 @@ export const projects: Project[] = [
     slug: "Drone-Localization",
     title: "3D Drone Localization using Passive Receivers",
     description: "In the 2026 Intern Cohort at Zeta Associates I worked on a project to localize a drone and create a dynamic visualization of the estimated position of the drone with a 95 percent confidence ellipsoid.",
-    fullDescription: "The pipeline to go from downlink from drone to geolocaiton of drone involves capturing time aligned samples, detecting a downlink burst, identifying subsample time delay between signals using a cross ambiguity function, feeding the time delays between 3 pairs of collectors into a Gauss-Newton solver, then plotting the solves. The components that I was responsible for on this project included the geolocation engine, the CAF and algorithmic speedups, and the visualization effort. It was increadibly rewarding to familiarize myself with the mathmatics behind geolocation math and apply it to a very real world problem.",
+    fullDescription: "The controller and drone of most commercial small unmanned aerial systems communicate using Time Division Multiple Access (TDMA), alternating between downlink transmissions containing live video and telemetry and uplink transmissions carrying commands. By using four passive RF collectors, the time difference of arrival (TDOA) between signals received at each collector can be measured to form a system of three nonlinear equations with three unknowns—the emitter’s \(x\), \(y\), and \(z\) position in Earth-Centered, Earth-Fixed (ECEF) coordinates. This system can then be solved to estimate the three-dimensional location of the transmitting drone. The resulting pipeline captures time-aligned samples, detects a downlink burst, estimates subsample time delays using a Cross-Ambiguity Function (CAF), feeds the measured delays into a Gauss-Newton multilateration solver, and visualizes the resulting geolocation estimates. My primary contributions focused on the geolocation engine, a high-speed FFT-accelerated CAF, algorithmic optimizations, and the visualization system. The CAF was designed to rapidly determine time differences between collectors, enabling the multilateration engine to operate within the system's latency requirements. I also developed the geolocation solver to robustly estimate emitter position and quantify the uncertainty associated with each solution. The completed system generated three-dimensional drone position estimates with 100% confidence-region containment and approximately 10-meter mean error across thousands of signal acquisitions. This project was particularly rewarding because it allowed me to develop a deeper understanding of the mathematics behind passive geolocation while applying those concepts to a real-world RF sensing problem.",
     images: ["/projects/droneloc/geo_media.png", '/projects/droneloc/droneloc2.jpg', '/projects/droneloc/droneloc3.jpg', '/projects/droneloc/caf_peak.png'],
     tags: ["Geolocation", "TDOA", "Cross Ambiguity Function", "Cesium", "Python", "C++"],
-    category: ["software", "hardware"]
+    category: ["software", "hardware"],
+    resources: [
+        {
+          label: "Final Presentation",
+          url: "/Zeta-Internship/",
+          type: "presentation"
+        },
+      ],
   },
 
   {
