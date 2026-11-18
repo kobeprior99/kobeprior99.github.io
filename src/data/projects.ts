@@ -101,6 +101,32 @@ export const projects: Project[] = [
   },
 
   {
+    slug: "1DFDFD",
+    title: "1D Finite-Difference Frequency-Domain for Multi-layer Structure Scattering",
+    description: "A MATLAB-based 1D FDFD solver for analyzing electromagnetic wave reflection and transmission through arbitrary multilayer structures.",
+    fullDescription: "Developed a one-dimensional Finite-Difference Frequency-Domain (FDFD) formulation to investigate electromagnetic wave interactions with multilayer media. The solver supports an arbitrary number of material layers with independently configurable relative permittivity, relative permeability, electric conductivity, and magnetic conductivity. Users can define open or perfectly electrically conducting (PEC) boundary conditions and evaluate frequency-dependent reflection and transmission characteristics. The project explores applications in radar-absorbing structures, radomes, electromagnetic shielding, and other multilayer electromagnetic systems. Additional numerical experiments investigate the optimization of a five-layer structure by varying material properties to characterize and improve its electromagnetic scattering performance.",
+    images: [
+      "/projects/1DFDFD/5-layer.png",
+      "/projects/1DFDFD/results.png"
+    ],
+    tags: [
+      "FDFD",
+      "Computational Electromagnetics",
+      "Multilayer Scattering",
+      "Radar Absorbing Structures",
+      "MATLAB"
+    ],
+    category: ["software"],
+    resources: [
+      {
+        label: "1D-FDFD MATLAB Code",
+        url: "https://github.com/kobeprior99/1D-FDFD",
+        type: "code"
+      }
+    ]
+  },
+
+  {
     slug: "patch-antenna",
     title: "X-Band Microstrip Patch Antennas",
     description: "Patch antennas were designed for 8.5 GHz using a finite difference time domain full-wave EM solver called CEMS, the patches were manufactured and the resonant frequency was confirmed with good agreement to simulation using a vector network analyzer.",
@@ -126,15 +152,6 @@ export const projects: Project[] = [
     tags: ["PCB Design", "PCB Art", "Promotional Coin"],
     category: ["hardware"],
     model3d: "/models/HKNcoin.glb",
-  },
-  {
-    slug: "finance_dashboard",
-    title: "Finance Dashboard",
-    description: "A personal project using python, web-based graphical user interface to report data about my current finances using a google sheet api.",
-    fullDescription: 'This was one of the first personal projects I worked on to learn python that related to my every day life. I am someone who spends a lot of time thinking about personal finance and I wanted to create a dashboard that would allow me to visualize my current progress towards financial goals as well as visualize whether or not I was on track to meet those goals. The dashboard uses a google sheet api to pull data from a google sheet that I use to track my finances and then uses matplotlib to create visualizations of the data. The dashboard is built using the nicegui python library and is a web-based graphical user interface. I interact with the google sheet through the command line by typing `finance keyword parameters` I can log recent expenses, add new income, adjust the current value of my investments and bank accounts.',
-    images: ["/projects/Finance_dash/Finance_Dashboard.png"],
-    tags: ["Python", "Data Visualization", "Google Sheets API"],
-    category: ["software"]
   },
 
   {
