@@ -14,7 +14,15 @@ const { project } = Astro.props;
 ---
 <Layout title={project.title}>
   <div class="project-detail">
-    <a href="/projects" class="back-link">← Back to Projects</a>
+  <a href="/projects" class="read-more back-link">
+    <svg class="back-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 12H5" />
+      <path d="M12 19l-7-7 7-7" />
+    </svg>
+    Back to Projects
+  </a>
     <div class="carousel">
       <button class="carousel-btn prev" id="prev">&#8592;</button>
       <div class="carousel-track-wrapper">
@@ -202,6 +210,19 @@ const { project } = Astro.props;
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.85rem;
     letter-spacing: 0.05em;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+  .back-link .back-arrow {
+    transition: transform 0.2s ease;
+  }
+  .back-link:hover .back-arrow {
+    transform: translateX(-3px);
   }
 </style>
 
