@@ -30,16 +30,15 @@ const { project } = Astro.props;
           {
             project.images.map((img, i) => (
               <div class="carousel-slide">
-                <Image
-                  src={resolveProjectImage(img)}
-                  alt={`${project.title} image ${i + 1}`}
-                  class="carousel-img"
-                  data-index={i}
-                  width={800}
-                  height={420}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
+              <Image
+                src={resolveProjectImage(img)}
+                alt={`${project.title} image ${i + 1}`}
+                class="carousel-img"
+                data-index={i}
+                width={1600}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
               </div>
             ))
           }
