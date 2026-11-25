@@ -66,6 +66,7 @@ export const fellowships: Award[] = [
 
 export const scholarships: Award[] = [
   // { name: "...", org: "...", year: "...", image: "/images/education/awards/..." },
+  { name: "Colorado Graduate Grant", org: "State of Colorado", year: "2026 - 2027" },
   { name: "Colorado Scholar Fund", org: "State of Colorado", year: "2022 - 2026" },
   { name: "VICEROY Scholarship", org: "AFRL, USWR&E and Griffis Institute", year: "2024 - 2026" },
   { name: "Bashen, George & Betty Scholarship", org: "Colorado School of Mines", year: "2024 - 2026" },
