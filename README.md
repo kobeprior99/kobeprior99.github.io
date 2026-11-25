@@ -2,7 +2,7 @@
 
 Personal portfolio website built with **Astro**, showcasing my projects, research, experience, and technical writing.
 
-🌐 **Live Website:** *kobeprior99.github.io*
+🌐 **Live Website:** *kobeprior.com*
 
 ---
 
@@ -28,11 +28,9 @@ Throughout my academic career, I've been honored with multiple **Dean's List** r
 
 This portfolio includes:
 
-- **About** — Background, education, and experience
-- **Projects** — Research, hardware, software, and DSP projects
-- **Timeline** — Academic and professional milestones
-- **Technical Notes** — Engineering articles and documentation
-- **Resume** — Downloadable PDF resume
+- **About** — Background, resume, my week represented in weeks, and experience in a timeline
+- **Projects** — hardware and software
+- **Education** — Full educational record, honors, awards, and certificates
 
 ---
 
