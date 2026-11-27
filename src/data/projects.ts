@@ -126,6 +126,37 @@ export const projects: Project[] = [
     ]
   },
 
+{
+  slug: "Monopoly",
+  title: "Monopoly Distributed Banker",
+  description:
+    "A phone-friendly web app that replaces paper money in Monopoly. Everyone joins from their own phone, and balances, rent, taxes, and the Free Parking pot stay in sync in real time.",
+  fullDescription: `Monopoly Distributed Banker replaces the paper money and the human banker in family Monopoly. One person runs a single Python script on a laptop, and everyone else joins from their phone's browser by entering a name. Each player gets $1,500 and a personal screen with their cash and one-tap buttons for the common moves.
+
+Players can pass Go (+$200), land on Go (+$400), pay income tax (10% of their cash, capped at $300, which goes into the Free Parking pot), or collect the whole pot when they land on Free Parking. They can also pay the bank for property and houses, pay another player for rent and deals, or pay every player at once for chance cards like "pay each player $50". Quick-entry buttons (+10, +50, +100, +200) make typing amounts fast on a phone.
+
+Every screen updates about every 1.5 seconds, so all players see the same balances, Free Parking pot, and a timestamped log of recent moves. Payments that would overdraw an account are rejected, each player can undo their own last move, and the game can be reset for everyone, optionally behind a password.
+
+The backend is a threaded Python HTTP server built only on the standard library, so there is nothing to install beyond Python 3.8+. The interface is a single embedded HTML, CSS, and JavaScript page designed for mobile, styled after Monopoly banknotes. Game state is kept in memory, and a Cloudflare tunnel can be used to let players outside the local Wi-Fi join over HTTPS.`,
+  images: [
+    "/projects/monopoly/Monopoly_Bank.png",
+    "/projects/monopoly/Monopoly_Bank2.png",
+    "/projects/monopoly/Monopoly_Bank3.png",
+    "/projects/monopoly/Monopoly_Bank4.png",
+    "/projects/monopoly/Monopoly_Bank5.png",
+    "/projects/monopoly/Monopoly_Bank6.png",
+  ],
+  tags: ["Monopoly", "Python"],
+  category: ["software"],
+  resources: [
+    {
+      label: "Monopoly Helper",
+      url: "https://github.com/kobeprior99/1D-FDFD",
+      type: "code",
+    },
+  ],
+},
+
   {
     slug: "patch-antenna",
     title: "X-Band Microstrip Patch Antennas",
